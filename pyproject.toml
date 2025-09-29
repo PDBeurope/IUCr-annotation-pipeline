@@ -1,0 +1,37 @@
+[project]
+name = "iucr_annotation_pipeline"
+version = "0.0.1"
+description = "A Python-based pipeline to wrap around a transformer model to annotated IUCr-style JATS XML for functional protein residues"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "bs4==0.0.2",
+    "datasets==4.0.0",
+    "en_core_sci_sm @ https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.5.3/en_core_sci_sm-0.5.3.tar.gz#sha256=20f740772479f3ec6c2a3a5b832a096400a821e2aba68a797c4ba54c224331ed",
+    "lxml==6.0.0",
+    "nltk==3.9.1",
+    "numpy==1.26.4",
+    "onnx==1.18.0",
+    "onnxruntime==1.22.1",
+    "optimum==1.27.0",
+    "pandas==2.3.1",
+    "requests==2.32.4",
+    "solrq==1.1.2",
+    "spacy==3.6.1",
+    "thinc==8.1.12",
+    "tokenizers==0.21.4",
+    "transformers==4.53.3",
+    "typer==0.9.4",
+    "urllib3==2.5.0",
+]
+
+[dependency-groups]
+dev = [
+    "coverage>=7.9.2",
+    "flake8>=7.3.0",
+    "pre-commit>=4.2.0",
+    "pytest>=8.4.1",
+]
+
+[project.scripts]
+pipeline_predict = "pipeline.predicting.run_local_inference_for_ner:main"
