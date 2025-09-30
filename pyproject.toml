@@ -5,6 +5,7 @@ description = "A Python-based pipeline to wrap around a transformer model to ann
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
+    "beautifulsoup4==4.14.2",
     "bs4==0.0.2",
     "datasets==4.0.0",
     "en_core_sci_sm @ https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.5.3/en_core_sci_sm-0.5.3.tar.gz#sha256=20f740772479f3ec6c2a3a5b832a096400a821e2aba68a797c4ba54c224331ed",
