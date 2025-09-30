@@ -668,7 +668,7 @@ def per_res_validation(soup: TextIO, text: str
     :rtype: Dict[str, Any]
 
     """
-    val_data = BeautifulSoup(soup, "xml")
+    val_data = bs4.BeautifulSoup(soup, "xml")
     entry = val_data.find("Entry")
     pdb_id = entry["pdbid"]
     percentbins = entry["percentilebins"]
@@ -802,7 +802,7 @@ def mutant_validation(soup: bs4.BeautifulSoup, text: str
     :rtype: List[Dict[str, Any]]
 
     """
-    val_data = BeautifulSoup(soup, "xml")
+    val_data = bs4.BeautifulSoup(soup, "xml")
     entry = val_data.find("Entry")
     pdb_id = entry["pdbid"]
     percentbins = entry["percentilebins"]
