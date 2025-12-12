@@ -1,0 +1,857 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<?release-delay 0|0 ?><?iucr-info access=oa?>
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD v1.1 20151215//EN" "/UnixComm/scripts/sh/pio/share/xml/dtds/external/NLM/JATS1.1/JATS-journalpublishing1-mathml3.dtd">
+<article xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ali="http://www.niso.org/schemas/ali/1.0/" article-type="research-article" dtd-version="1.1" xml:lang="EN"><front>
+      <journal-meta>
+         <journal-id journal-id-type="publisher-id">Acta Cryst. D</journal-id>
+         <journal-title-group>
+            <journal-title>Acta Crystallographica Section D</journal-title>
+            <journal-subtitle>Biological Crystallography</journal-subtitle>
+            <abbrev-journal-title>Acta Crystallogr D Biol Crystallogr</abbrev-journal-title>
+         </journal-title-group>
+         <issn pub-type="epub">1399-0047</issn>
+         <publisher>
+            <publisher-name>International Union of Crystallography</publisher-name>
+         </publisher>
+      </journal-meta>
+      <article-meta>
+         <article-id pub-id-type="publisher-id">gm5040</article-id>
+         <article-id pub-id-type="doi">10.1107/S1399004715018519</article-id>
+         <article-id pub-id-type="coden">ABCRE6</article-id>
+         <article-id pub-id-type="pii">S1399004715018519</article-id>
+         <article-categories>
+            <subj-group subj-group-type="heading">
+               <subject>research papers</subject>
+            </subj-group>
+         </article-categories>
+         <title-group>
+            <article-title>Sent packing: protein engineering generates a new crystal form of <italic toggle="yes">Pseudomonas aeruginosa</italic> DsbA1 with increased catalytic surface accessibility</article-title>
+            <alt-title>New crystal form of <italic toggle="yes">Pseudomonas aeruginosa</italic> DsbA1</alt-title>
+         </title-group>
+         <contrib-group>
+            <contrib contrib-type="author">
+               <name name-style="western">
+                  <surname>McMahon</surname>
+                  <given-names>Roisin M.</given-names>
+               </name>
+               <xref ref-type="aff" rid="a">a</xref>
+               <xref ref-type="corresp" rid="cor">*</xref>
+            </contrib>
+            <contrib contrib-type="author">
+               <name name-style="western">
+                  <surname>Coin&#231;on</surname>
+                  <given-names>Mathieu</given-names>
+               </name>
+               <xref ref-type="aff" rid="a">a</xref>
+               <xref ref-type="author-notes" rid="aunote1">&#8225;</xref>
+            </contrib>
+            <contrib contrib-type="author">
+               <name name-style="western">
+                  <surname>Tay</surname>
+                  <given-names>Stephanie</given-names>
+               </name>
+               <xref ref-type="aff" rid="a">a</xref>
+            </contrib>
+            <contrib contrib-type="author">
+               <name name-style="western">
+                  <surname>Heras</surname>
+                  <given-names>Bego&#241;a</given-names>
+               </name>
+               <xref ref-type="aff" rid="a">a</xref>
+               <xref ref-type="author-notes" rid="aunote2">&#167;</xref>
+            </contrib>
+            <contrib contrib-type="author">
+               <name name-style="western">
+                  <surname>Morton</surname>
+                  <given-names>Craig J.</given-names>
+               </name>
+               <xref ref-type="aff" rid="b">b</xref>
+               <xref ref-type="author-notes" rid="aunote3">&#182;</xref>
+            </contrib>
+            <contrib contrib-type="author">
+               <name name-style="western">
+                  <surname>Scanlon</surname>
+                  <given-names>Martin J.</given-names>
+               </name>
+               <xref ref-type="aff" rid="c">c</xref>
+            </contrib>
+            <contrib contrib-type="author">
+               <name name-style="western">
+                  <surname>Martin</surname>
+                  <given-names>Jennifer L.</given-names>
+               </name>
+               <xref ref-type="aff" rid="a">a</xref>
+            </contrib>
+            <aff id="a">
+               <label>a</label>Institute for Molecular Bioscience, Division of Chemistry and Structural Biology, <institution>University of Queensland</institution>, 306 Carmody Road, Brisbane, Queensland 4072, <country>Australia</country>
+            </aff>
+            <aff id="b">
+               <label>b</label>
+               <institution>Biota Holdings Limited</institution>, Unit 10, 585 Blackburn Road, Notting Hill, Victoria 3168, <country>Australia</country>
+            </aff>
+            <aff id="c">
+               <label>c</label>Medicinal Chemistry, Monash Institute of Pharmaceutical Sciences, <institution>Monash University</institution>, 381 Royal Parade, Parkville, Victoria 3052, <country>Australia</country>
+            </aff>
+         </contrib-group>
+         <author-notes>
+            <corresp id="cor">Correspondence e-mail: <email>r.mcmahon1@uq.edu.au</email>
+            </corresp>
+            <fn id="aunote1">
+               <label>&#8225;</label>
+               <p>Current address: Centre for Biomembrane Research, Department of Biochemistry and Biophysics, Stockholm University, SE-106 91 Stockholm, Sweden.</p>
+            </fn>
+            <fn id="aunote2">
+               <label>&#167;</label>
+               <p>Current address: Department of Biochemistry and Genetics, La Trobe Institute for Molecular Science, La Trobe University, Melbourne, Victoria 3086, Australia.</p>
+            </fn>
+            <fn id="aunote3">
+               <label>&#182;</label>
+               <p>Current address: Australian Cancer Research Foundation Rational Drug Discovery Centre, St Vincent&#8217;s Institute of Medical Research, Fitzroy, Victoria 3056, Australia.</p>
+            </fn>
+         </author-notes>
+         <pub-date pub-type="collection">
+            <day>01</day>
+            <month>12</month>
+            <year>2015</year>
+         </pub-date>
+         <pub-date pub-type="epub">
+            <day>26</day>
+            <month>11</month>
+            <year>2015</year>
+         </pub-date>
+         <volume>71</volume>
+         <issue>Pt 12</issue>
+         <issue-id pub-id-type="publisher-id">d151200</issue-id>
+         <fpage>2386</fpage>
+         <lpage>2395</lpage>
+         <supplementary-material position="float" orientation="portrait">
+            <p>PDB reference: <ext-link ext-link-type="pdb" xlink:href="4zl7">E82I PaDsbA1, 4zl7</ext-link>
+            </p>
+         </supplementary-material>
+         <supplementary-material position="float" orientation="portrait">
+            <p>PDB reference: <ext-link ext-link-type="pdb" xlink:href="4zl8">4zl8</ext-link>
+            </p>
+         </supplementary-material>
+         <supplementary-material position="float" orientation="portrait">
+            <p>PDB reference: <ext-link ext-link-type="pdb" xlink:href="4zl9">4zl9</ext-link>
+            </p>
+         </supplementary-material>
+         <history>
+            <date date-type="received">
+               <day>12</day>
+               <month>06</month>
+               <year>2015</year>
+            </date>
+            <date date-type="accepted">
+               <day>03</day>
+               <month>10</month>
+               <year>2015</year>
+            </date>
+         </history>
+         <permissions>
+            <copyright-statement>&#169; McMahon et al. 2015</copyright-statement>
+            <copyright-year>2015</copyright-year>
+            <license license-type="open-access" xlink:href="http://creativecommons.org/licenses/by/2.0/uk/">
+               <license-p>This is an open-access article distributed under the terms of the Creative Commons Attribution (CC-BY) Licence, which permits unrestricted
+                                                    use, distribution, and reproduction in any medium, provided the original authors and source are cited.</license-p>
+               <ali:license_ref>http://creativecommons.org/licenses/by/2.0/uk/</ali:license_ref>
+            </license>
+         </permissions>
+         <self-uri xlink:href="https://doi.org/10.1107/S1399004715018519">A full version of this article is available from Crystallography Journals Online.</self-uri>
+         <abstract abstract-type="toc">
+            <p>The crystal structure of a <italic toggle="yes">P. aeruginosa</italic> DsbA1 variant is more suitable for fragment-based lead discovery efforts to identify inhibitors of this antimicrobial drug target. In the reported structures the active site of the protein can simultaneously bind multiple ligands introduced in the crystallization solution or <italic toggle="yes">via</italic> soaking.</p>
+         </abstract>
+         <abstract>
+            <p>
+               <italic toggle="yes">Pseudomonas aeruginosa</italic> is an opportunistic human pathogen for which new antimicrobial drug options are urgently sought. <italic toggle="yes">P. aeruginosa</italic> disulfide-bond protein A1 (PaDsbA1) plays a pivotal role in catalyzing the oxidative folding of multiple virulence proteins and as such holds great promise as a drug target. As part of a fragment-based lead discovery approach to PaDsbA1 inhibitor development, the identification of a crystal form of PaDsbA1 that was more suitable for fragment-soaking experiments was sought. A previously identified crystallization condition for this protein was unsuitable, as in this crystal form of PaDsbA1 the active-site surface loops are engaged in the crystal packing, occluding access to the target site. A single residue involved in crystal-packing interactions was substituted with an amino acid commonly found at this position in closely related enzymes, and this variant was successfully used to generate a new crystal form of PaDsbA1 in which the active-site surface is more accessible for soaking experiments. The PaDsbA1 variant displays identical redox character and <italic toggle="yes">in vitro</italic> activity to wild-type PaDsbA1 and is structurally highly similar. Two crystal structures of the PaDsbA1 variant were determined in complex with small molecules bound to the protein active site. These small molecules (MES, glycerol and ethylene glycol) were derived from the crystallization or cryoprotectant solutions and provide a proof of principle that the reported crystal form will be amenable to co-crystallization and soaking with small molecules designed to target the protein active-site surface.</p>
+         </abstract>
+         <kwd-group>
+            <kwd>bacterial virulence</kwd>
+            <kwd>drug design</kwd>
+            <kwd>fragment-based lead discovery</kwd>
+            <kwd>DsbA</kwd>
+         </kwd-group>
+         <counts>
+            <page-count count="undef"/>
+         </counts>
+      </article-meta>
+   </front>
+   <body>
+      <sec id="sec1" sec-type="introduction">
+         <label>1</label>
+         <title>Introduction &#160; </title>
+         <p>Disulfide-bond (DSB) proteins are bacterial oxidoreductase enzymes that catalyze the folding of disulfide bonds in unfolded or partially folded protein substrates. The primary oxidase is DsbA, which typically employs a Cys-Xaa-Xaa-Cys (C<italic toggle="yes">XX</italic>C) active-site motif to catalyze a series of thiol-exchange reactions that ultimately oxidize reduced protein substrates. DsbA is itself maintained in an active state by interactions with a partner redox membrane protein (DsbB). DsbA substrates include many structural and secreted virulence effector proteins, and there is now overwhelming evidence that the DSB machinery plays a vital role in the pathogenicity of Proteobacteria (Heras <italic toggle="yes">et al.</italic>, 2009<xref ref-type="bibr" rid="bb16"/>); deletion of DsbA prevents lethal bacterial infection <italic toggle="yes">in vivo</italic> and has pleiotropic effects upon virulence (Ireland <italic toggle="yes">et al.</italic>, 2014<xref ref-type="bibr" rid="bb18"/>; Totsika <italic toggle="yes">et al.</italic>, 2009<xref ref-type="bibr" rid="bb27"/>). In the multidrug-resistant and opportunistic Gram-negative bacterium <italic toggle="yes">Pseudomonas aeruginosa</italic>, deletion of DsbA impairs the secretion and activity of a number of virulence effector proteins (Braun <italic toggle="yes">et al.</italic>, 2001<xref ref-type="bibr" rid="bb4"/>; Dacheux <italic toggle="yes">et al.</italic>, 2002<xref ref-type="bibr" rid="bb7"/>; Ha <italic toggle="yes">et al.</italic>, 2003<xref ref-type="bibr" rid="bb14"/>) and disrupts bacterial motility (Ha <italic toggle="yes">et al.</italic>, 2003<xref ref-type="bibr" rid="bb14"/>; Urban <italic toggle="yes">et al.</italic>, 2001<xref ref-type="bibr" rid="bb28"/>). As a consequence of its role in the activity of multiple downstream effector proteins, <italic toggle="yes">P. aeruginosa</italic> DsbA (PaDsbA1) is a promising target for inhibition and hence novel antimicrobial development.</p>
+         <p>Fragment-based lead discovery (FBLD) approaches offer an efficient way to identify small-molecule binders that can subsequently be elaborated or linked to generate eventual drug-like compounds (Erlanson, 2012<xref ref-type="bibr" rid="bb10"/>). Indeed, the approach has recently led to the design of early-stage inhibitors of <italic toggle="yes">Escherichia coli</italic> DsbA (Adams <italic toggle="yes">et al.</italic>, 2015<xref ref-type="bibr" rid="bb1"/>). Highly advantageous for the iterative progression from hit to lead in such an FBLD campaign is high-resolution structural information about target&#8211;compound interactions to inform rational medicinal chemistry efforts.</p>
+         <p>The crystal structure of PaDsbA1 has previously been determined to 1.5&#8197;&#197; resolution (Shouldice <italic toggle="yes">et al.</italic>, 2010<xref ref-type="bibr" rid="bb26"/>). However, inspection of the crystal packing revealed that a network of interactions, in particular a salt bridge, engages the active-site surface in a tightly packed crystal lattice inter&#173;action. This interaction may occlude access of ligands to the active site in crystal-soaking experiments, thereby impeding the determination of protein&#8211;fragment complex crystals; indeed, our efforts to use this crystal form for fragment-soaking experiments did not result in any protein&#8211;fragment structures (data not shown). To break this salt bridge, we replaced a single amino acid (Glu82) with a residue commonly found at this position in closely related enzymes and obtained crystals in a new space group with altered crystal packing and increased solvent-channel access to the target site. This variant of PaDsbA1 is biochemically and structurally very similar to wild-type PaDsbA1, with conformational changes confined to the N-terminal end of helix 3. Furthermore, structures of the PaDsbA1 variant were determined in complex with multiple small molecules bound on its active-site surface, one from the crystallization condition and two from cryoprotectant solutions, providing proof of principle that in the new crystal form the active-site face is accessible to compounds introduced <italic toggle="yes">via</italic> soaking or co-crystallization.</p>
+      </sec>
+      <sec id="sec2" sec-type="methods">
+         <label>2</label>
+         <title>Methods &#160; </title>
+         <sec id="sec2.1">
+            <label>2.1</label>
+            <title>Expression-vector construction &#160; </title>
+            <p>The <italic toggle="yes">P. aeruginosa</italic> 
+               <italic toggle="yes">dsbA</italic> gene lacking a signal sequence was previously inserted into a modified pET-28a plasmid (Novagen) to generate a construct with a <italic toggle="yes">Tobacco etch virus</italic> (TEV) protease-cleavable N-terminal His<sub>6</sub> tag (Shouldice <italic toggle="yes">et al.</italic>, 2010<xref ref-type="bibr" rid="bb26"/>).</p>
+         </sec>
+         <sec id="sec2.2">
+            <label>2.2</label>
+            <title>Site-directed mutagenesis &#160; </title>
+            <p>Glu82 of PaDsbA1 forms an ionic interaction with an active-site residue in the reported crystal structure. The amino-acid sequence of PaDsbA1 (UniProt ID P0C2B2) was aligned with homologues from <italic toggle="yes">E. coli</italic>, <italic toggle="yes">Klebsiella pneumoniae</italic> and <italic toggle="yes">Vibrio cholerae</italic> using <italic toggle="yes">ClustalW</italic>2 to identify residues to replace Glu82. Inspection of the resulting alignment identified that hydrophobic aliphatic side chains (Ile and Met) were found at positions equivalent to Glu82 of PaDsbA1. Subsequently, a single point mutation (Glu82 to Ile, hereafter referred to as E82I PaDsbA1) was introduced using a site-directed mutagenesis approach. Two complementary primers (5&#8242;-CAG ATG TTT CTG ACA CTG ATA AGT ATG GGC GTA GAA C-3&#8242; and 5&#8242;-GTT CTA CGC CCA TAC TTA TCA GTG TCA GAA ACA TCT G-3&#8242;) containing the desired isoleucine mutation and designed to anneal to opposite strands of the template vector were synthesized (GeneWorks, Australia). A 25&#8197;&#181;l reaction containing 10&#8197;ng double-stranded parental vector, 5&#8197;&#181;<italic toggle="yes">M</italic> of each primer, 1&#8197;m<italic toggle="yes">M</italic> dNTP and 0.5&#8197;&#181;l <italic toggle="yes">PfuTurbo</italic> DNA polymerase (Pacific Laboratory Products, Australia) was subjected to 25 thermal cycles (95&#176;C for 50&#8197;s, 56&#176;C for 60&#8197;s and 68&#176;C for 9&#8197;min) with a final extension of 10&#8197;min at 68&#176;C. The parental vector was subsequently digested with 20 units of DpnI (New England BioLabs) at 37&#176;C for 1&#8197;h and the resulting product was used to transform competent TOP10 <italic toggle="yes">E. coli</italic> cells. The introduced mutation was confirmed by sequencing (Australian Genome Research Facility, Australia).</p>
+         </sec>
+         <sec id="sec2.3">
+            <label>2.3</label>
+            <title>Protein expression and purification &#160; </title>
+            <p>Wild-type (WT) PaDsbA1 (212 amino acids, 23.7&#8197;kDa) and E82I PaDsbA1 (212 amino acids, 23.7&#8197;kDa) were expressed and purified largely as described in Shouldice <italic toggle="yes">et al.</italic> (2010<xref ref-type="bibr" rid="bb26"/>), but with some modifications. Expression was performed in <italic toggle="yes">E. coli</italic> BL21 (DE3) pLysS cells at 30&#176;C and 200&#8197;rev&#8197;min<sup>&#8722;1</sup> for 18&#8197;h in ZYP-5052 autoinduction medium [10%(<italic toggle="yes">w</italic>/<italic toggle="yes">v</italic>) tryptone, 5%(<italic toggle="yes">w</italic>/<italic toggle="yes">v</italic>) yeast extract, 0.5%(<italic toggle="yes">v</italic>/<italic toggle="yes">v</italic>) glycerol, 0.05%(<italic toggle="yes">w</italic>/<italic toggle="yes">v</italic>) glucose, 0.2%(<italic toggle="yes">w</italic>/<italic toggle="yes">v</italic>) &#945;-lactose, 25&#8197;m<italic toggle="yes">M</italic> ammonium sulfate, 50&#8197;m<italic toggle="yes">M</italic> KH<sub>2</sub>PO<sub>4</sub>, 50&#8197;m<italic toggle="yes">M</italic> Na<sub>2</sub>HPO<sub>4</sub>, 1&#8197;m<italic toggle="yes">M</italic> magnesium sulfate and trace metals] in the presence of ampicillin (100&#8197;&#181;g&#8197;ml<sup>&#8722;1</sup>) and chloramphenicol (34&#8197;&#181;g&#8197;ml<sup>&#8722;1</sup>). Harvested cells were resuspended in a solution consisting of 25&#8197;m<italic toggle="yes">M</italic> Tris pH 7.5, 150&#8197;m<italic toggle="yes">M</italic> NaCl, DNAse (Roche Diagnostics, Australia) and protease inhibitors (BioPioneer Inc., California, USA) and were lysed using a Constant Systems Cell Disrupter (single passage at 124&#8197;MPa pressure), and the soluble cell fraction was isolated by centrifugation (40&#8197;000<italic toggle="yes">g</italic> for 30&#8197;min). Immobilized metal-affinity chromatography (IMAC) purification was performed in batch using TALON resin (Clontech) equilibrated in 25&#8197;m<italic toggle="yes">M</italic> HEPES pH 7.4, 150&#8197;m<italic toggle="yes">M</italic> NaCl, 2&#8197;m<italic toggle="yes">M</italic> imidazole. Following wash steps (25&#8197;m<italic toggle="yes">M</italic> HEPES pH 7.4, 500&#8197;m<italic toggle="yes">M</italic> NaCl, 10&#8197;m<italic toggle="yes">M</italic> imidazole), purified protein was eluted with 25&#8197;m<italic toggle="yes">M</italic> HEPES pH 7.4, 150&#8197;m<italic toggle="yes">M</italic> NaCl, 200&#8197;m<italic toggle="yes">M</italic> imidazole. Purified protein was buffer-exchanged on a Sepharose gel-filtration column to remove imidazole prior to cleavage of the N-terminal His<sub>6</sub> tag by treatment with His-tagged TEV protease at a mass ratio of 1:100 enzyme:substrate. Contaminating TEV protease and uncleaved PaDsbA1 were removed by a second IMAC step. Purified tag-free PaDsbA1 (192 amino acids, 21.3&#8197;kDa for both WT and E82I PaDsbA1) was oxidized with a 50:1 molar excess of oxidized glutathione (Sigma&#8211;Aldrich). Finally, protein monodispersity and purity (&gt;95%) were confirmed by size-exclusion chromatography (Superdex 75 16/60, GE Healthcare Life Sciences) and SDS&#8211;PAGE analysis, respectively. The protein oxidation state was confirmed by an Ellman assay (Ellman <italic toggle="yes">et al.</italic>, 1961<xref ref-type="bibr" rid="bb8"/>).</p>
+         </sec>
+         <sec id="sec2.4">
+            <label>2.4</label>
+            <title>Screening, optimization and routine production of E82I PaDsbA1 crystals &#160; </title>
+            <p>For all experiments, E82I PaDsbA1 was crystallized using the UQ ROCX Facility, the vapour-diffusion method and hanging drops. 96-well plates (100&#8197;nl protein solution and 100&#8197;nl reservoir solution equilibrated against 75&#8197;&#181;l reservoir solution) were set up using a Mosquito crystallization robot (TTP Labtech) against commercially available crystallization screens or bespoke crystallization formulations prepared using a Tecan liquid-handling robot and the <italic toggle="yes">RockMaker</italic> software (Formulatrix). All crystallization experiments were maintained at 20&#176;C. Screening of commercially available crystallization screens with PaDsbA1 at a concentration of 57&#8197;mg&#8197;ml<sup>&#8722;1</sup> identified an initial condition [25%(<italic toggle="yes">w</italic>/<italic toggle="yes">v</italic>) PEG 1500, 0.1&#8197;<italic toggle="yes">M</italic> MMT pH 6.0; PACT (Qiagen) condition No. 39] that yielded single crystals from spontaneous nucleation. Subsequent optimization efforts demonstrated that single crystals could be obtained in 20&#8211;29%(<italic toggle="yes">w</italic>/<italic toggle="yes">v</italic>) PEG 1500, 0.1&#8197;<italic toggle="yes">M</italic> MES pH 6.0, but the drops often required microseeding if spontaneous nucleation did not occur within 2&#8211;3&#8197;d. Crystals were cuboid in shape and typically 60&#8211;170&#8197;&#181;m (length) &#215; 30&#8211;60&#8197;&#181;m (width) &#215; 20&#8211;40&#8197;&#181;m (depth) in size.</p>
+         </sec>
+         <sec id="sec2.5">
+            <label>2.5</label>
+            <title>X-ray data collection &#160; </title>
+            <p>To cryocool the crystals, cryoprotectant solutions were prepared from stock solutions such that they matched the concentration of the mother-liquor components with the addition of either 40% polyethylene glycol 400, 20% ethylene glycol or 20% glycerol. In each case, crystals were briefly (&lt;30&#8197;s) soaked in the respective cryoprotectant solution prior to plunging them into liquid nitrogen. X-ray data were collected at 100&#8197;K on the microfocus beamline MX2 at the Australian Synchrotron using an ADSC Quantum 315r detector. Data were collected at a wavelength of 0.95370&#8197;&#197; over a total angular rotation of 180&#176; using 1&#176; &#966; slices with an exposure time of 1&#8197;s. The data were indexed and integrated with <italic toggle="yes">iMosflm</italic> (Battye <italic toggle="yes">et al.</italic>, 2011<xref ref-type="bibr" rid="bb3"/>) and scaled using <italic toggle="yes">POINTLESS</italic> and <italic toggle="yes">SCALA</italic> or <italic toggle="yes">AIMLESS</italic> (Evans, 2006<xref ref-type="bibr" rid="bb11"/>, 2011<xref ref-type="bibr" rid="bb12"/>; Evans &amp; Murshudov, 2013<xref ref-type="bibr" rid="bb31"/>) within the <italic toggle="yes">CCP</italic>4 suite (Winn <italic toggle="yes">et al.</italic>, 2011<xref ref-type="bibr" rid="bb29"/>). For crystals 1 and 2, all collected data were used and no limit on resolution was imposed during processing. For crystal 3, a resolution limit of 1.7&#8197;&#197; was imposed to maintain a mean <italic toggle="yes">I</italic>/&#963;(<italic toggle="yes">I</italic>) in the highest resolution shell close to 2.</p>
+         </sec>
+         <sec id="sec2.6">
+            <label>2.6</label>
+            <title>Structure determination and refinement &#160; </title>
+            <p>All phasing and model-refinement procedures were implemented within the <italic toggle="yes">PHENIX</italic> software suite. The data were phased using molecular-replacement methods with <italic toggle="yes">AutoMR</italic> (McCoy <italic toggle="yes">et al.</italic>, 2007<xref ref-type="bibr" rid="bb21"/>) using WT PaDsbA1 (PDB entry <ext-link ext-link-type="uri" xlink:href="https://scripts.iucr.org/cgi-bin/cr.cgi?rm=pdb&amp;pdbId=3h93">3h93</ext-link>; Shouldice <italic toggle="yes">et al.</italic>, 2010<xref ref-type="bibr" rid="bb26"/>) as a search model. The resulting model was subjected to iterative rounds of refinement including refinement using TLS groups and refinement of H atoms using a riding model (<italic toggle="yes">phenix.refine</italic>; Afonine <italic toggle="yes">et al.</italic>, 2012<xref ref-type="bibr" rid="bb2"/>) and model building using <italic toggle="yes">Coot</italic> (Emsley &amp; Cowtan, 2004<xref ref-type="bibr" rid="bb9"/>). Nonwater atoms were refined with anisotropic atomic displacement parameters. Coordinates and restraints for PEG 400, ethylene glycol, glycerol and MES molecules were generated using <italic toggle="yes">elBOW</italic> (Moriarty <italic toggle="yes">et al.</italic>, 2009<xref ref-type="bibr" rid="bb23"/>) and the quality of the final model was assessed with <italic toggle="yes">MolProbity</italic> (Chen <italic toggle="yes">et al.</italic>, 2010<xref ref-type="bibr" rid="bb6"/>) throughout the refinement process. Data-collection and refinement statistics are summarized in Tables 1<xref ref-type="table" rid="table1"/> and 2<xref ref-type="table" rid="table2"/>. The final refined structures have been deposited in the Protein Data Bank (PDB entries <ext-link ext-link-type="uri" xlink:href="https://scripts.iucr.org/cgi-bin/cr.cgi?rm=pdb&amp;pdbId=4zl7">4zl7</ext-link>, <ext-link ext-link-type="uri" xlink:href="https://scripts.iucr.org/cgi-bin/cr.cgi?rm=pdb&amp;pdbId=4zl8">4zl8</ext-link> and <ext-link ext-link-type="uri" xlink:href="https://scripts.iucr.org/cgi-bin/cr.cgi?rm=pdb&amp;pdbId=4zl9">4zl9</ext-link>). All structural figures were generated using <italic toggle="yes">PyMOL</italic> (v.1.6; Schr&#246;dinger; <ext-link ext-link-type="uri" xlink:href="http://pymol.org">http://pymol.org</ext-link>) and <italic toggle="yes">Adobe Illustrator</italic>.</p>
+         </sec>
+         <sec id="sec2.7">
+            <label>2.7</label>
+            <title>Redox potential determination &#160; </title>
+            <p>The redox potentials of WT and E82I PaDsbA1 were determined fluorometrically by exploiting the redox-state-dependent changes in the intrinsic fluorescence of a tryptophan residue close to the catalytic disulfide bridge. Oxidized PaDsbA1 samples were prepared by incubation with a molar excess of oxidized glutathione, which was subsequently removed using an NAP-5 desalting column (GE Healthcare). The redox state of the protein was confirmed by an Ellman assay (Ellman <italic toggle="yes">et al.</italic>, 1961<xref ref-type="bibr" rid="bb8"/>). Oxidized PaDsbA1 (2&#8197;&#181;<italic toggle="yes">M</italic>) in 100&#8197;m<italic toggle="yes">M</italic> sodium phosphate pH 7.0, 0.1&#8197;m<italic toggle="yes">M</italic> EDTA was combined with oxidized glutathione (1&#8197;m<italic toggle="yes">M</italic>) and a range of concentrations of reduced glutathione (4&#8197;&#181;<italic toggle="yes">M</italic> to 100&#8197;m<italic toggle="yes">M</italic>) and allowed to equilibrate at 30&#176;C overnight. The fraction of reduced and oxidized PaDsbA1 at equilibrium was determined from the relative fluorescence intensity of each reaction (excitation at 280&#8197;nm, emission at 340&#8197;nm) recorded in a black 96-well OptiPlate (Perkin&#173;Elmer, Australia) using a Synergy H1 multimode plate reader (Biotek, Millennium Science, Australia). Six independent experiments were performed to determine the equilibrium constant with glutathione. The redox potential was calculated using the Nernst equation as described previously (Wunderlich &amp; Glockshuber, 1993<xref ref-type="bibr" rid="bb30"/>).</p>
+         </sec>
+         <sec id="sec2.8">
+            <label>2.8</label>
+            <title>Insulin reduction &#160; </title>
+            <p>The protein disulfide reductase activity of WT and E82I PaDsbA1 was measured <italic toggle="yes">in vitro</italic> using an insulin-reduction assay (Holmgren, 1979<xref ref-type="bibr" rid="bb17"/>). Briefly, in this reaction DsbA catalyzes the reduction (in the presence of DTT) of the intermolecular disulfide bonds between chains A and B of insulin. Upon reduction of the disulfide bonds, chain B precipitates, which can be detected as an increase in the optical density at 650&#8197;nm. Reaction solutions were prepared in a final volume of 200&#8197;&#181;l in a 96-well transparent clear-bottomed plate and <italic toggle="yes">A</italic>
+               <sub>650&#8197;nm</sub> measurements were made at 15&#8197;s intervals over a period of 80&#8197;min on a Synergy H1 multimode plate reader (Biotek, Millennium Science, Australia). Reduced WT or E82I PaDsbA1 was prepared at a final concentration of 10&#8197;&#181;<italic toggle="yes">M</italic> in 100&#8197;m<italic toggle="yes">M</italic> sodium phosphate pH 7.0, 2&#8197;m<italic toggle="yes">M</italic> EDTA, 0.3&#8197;m<italic toggle="yes">M</italic> DTT. Insulin (human insulin; Sigma&#8211;Aldrich) was added immediately prior to measurements at a final concentration of 0.131&#8197;m<italic toggle="yes">M</italic>.</p>
+         </sec>
+         <sec id="sec2.9">
+            <label>2.9</label>
+            <title>Model peptide-substrate folding assay &#160; </title>
+            <p>The oxidase activity of WT and E82I PaDsbA1 was assayed using a peptide-oxidation assay, in which the steady-state fluorescence of a substrate peptide is directly coupled to its oxidation state. The substrate is dually labelled with a lanthanide metal ion (europium) and a sensitizer (methylcoumarin amide; MCA), which are spatially distant from one another in the reduced state but are in sufficiently close proximity to support efficient energy transfer in the oxidized state. Oxidation of the peptide substrate can be followed by measuring the fluorescence emission intensity of europium after specific MCA excitation. Accordingly, 80&#8197;n<italic toggle="yes">M</italic> WT or E82I PaDsbA1 in 50&#8197;m<italic toggle="yes">M</italic> MES pH 5.5, 50&#8197;m<italic toggle="yes">M</italic> NaCl, 2&#8197;m<italic toggle="yes">M</italic> EDTA was combined with 2&#8197;m<italic toggle="yes">M</italic> oxidized glutathione and 8&#8197;&#181;<italic toggle="yes">M</italic> peptide substrate in a total volume of 50&#8197;&#181;l. Oxidation of the peptide substrate was monitored in a Synergy H1 multimode plate reader using 384-well white OptiPlates (PerkinElmer, Australia) with excitation at 340&#8197;nm and emission at 615&#8197;nm, a 150&#8197;ms delay before reading and a 100&#8197;ms reading time.</p>
+         </sec>
+      </sec>
+      <sec id="sec3" sec-type="discussion|interpretation">
+         <label>3</label>
+         <title>Results and discussion &#160; </title>
+         <sec id="sec3.1">
+            <label>3.1</label>
+            <title>Protein engineering disrupts an active-site-mediated crystal-packing interaction &#160; </title>
+            <p>The active-site surface of DsbA enzymes is composed of a C<italic toggle="yes">XX</italic>C motif located at the N-terminal end of H1 in the thioredoxin domain and three additional loop regions (L1, linking &#946;3 and H2; L2, linking H6 and &#946;4 (the <italic toggle="yes">cis</italic>-Pro loop of the thioredoxin fold; Martin <italic toggle="yes">et al.</italic>, 1993<xref ref-type="bibr" rid="bb20"/>); and L3, linking &#946;5 and H7, described in McMahon <italic toggle="yes">et al.</italic>, 2014<xref ref-type="bibr" rid="bb22"/>), which together generate the redox-active site of the enzyme and form the surface for engagement with substrate and partner proteins.</p>
+            <p>Inspection of the crystal packing of the 1.5&#8197;&#197; resolution WT PaDsbA1 (Shouldice <italic toggle="yes">et al.</italic>, 2010<xref ref-type="bibr" rid="bb26"/>; PDB entry <ext-link ext-link-type="uri" xlink:href="https://scripts.iucr.org/cgi-bin/cr.cgi?rm=pdb&amp;pdbId=3h93">3h93</ext-link>) crystal structure revealed that a number of intermolecular inter&#173;actions engage the active-site surface in crystal lattice contacts; in particular, a salt bridge (2.88&#8197;&#197;) between His39 of the active-site Cys-His-Pro-Cys motif and Glu82 of a symmetry-related mate and a hydrogen-bonding interaction (3.25&#8197;&#197;) between the backbone N atom of Val153 (L3) and the carboxyl O atom of a Ser83 symmetry mate. Together, these result in a surface packing that may impede small-molecule access to the active site during crystal soaking experiments. Screening of alternative crystallization conditions using WT PaDsbA1 yielded crystals of different space groups (<italic toggle="yes">P</italic>4 and <italic toggle="yes">P</italic>4<sub>1</sub> with two molecules in the asymmetric unit) but did not break the primary His39&#8211;Glu82<sub>sym</sub> crystal contact (data not shown).</p>
+            <p>To break the critical salt bridge, we employed site-directed mutagenesis, replacing Glu82 with isoleucine. We selected isoleucine for two reasons: firstly, its uncharged side chain cannot engage in electrostatic contacts and, secondly, isoleucine is found at this position in the closely related enzymes <italic toggle="yes">V. cholerae</italic> DsbA and <italic toggle="yes">K. pneumoniae</italic> DsbA (Fig. 1<xref ref-type="fig" rid="fig1"/>
+               <italic toggle="yes">a</italic>) and substitution was therefore anticipated to have a minimal effect on both protein structure and function. We subsequently obtained crystals of the E82I PaDsbA1 variant in a new space group (<italic toggle="yes">P</italic>2<sub>1</sub>, one molecule in the asymmetric unit). The structure of the E82I PaDsbA1 variant (crystal 1) was determined to 1.9&#8197;&#197; resolution with an <italic toggle="yes">R</italic> factor of 15.9% (<italic toggle="yes">R</italic>
+               <sub>free</sub> of 20.2%), indicating that the model represents the data with high accuracy. Details of data collection, solution methods and additional indicators of the quality of the final model are given in Tables 1<xref ref-type="table" rid="table1"/> and 2<xref ref-type="table" rid="table2"/>. Inspection of the structure confirmed that our site-directed mutagenesis approach successfully disrupted the previous intermolecular salt bridge. Calculation of the total surface area of interfacing surfaces involved in intermolecular crystal interactions using the <italic toggle="yes">Protein Interfaces, Surfaces and Assemblies</italic> service <italic toggle="yes">PISA</italic> at the European Bioinformatics Institute (<ext-link ext-link-type="uri" xlink:href="http://www.ebi.ac.uk/pdbe/prot_int/pistart.html">http://www.ebi.ac.uk/pdbe/prot_int/pistart.html</ext-link>) found that relative to WT PaDsbA1, E82I PaDsbA has a &#8764;20% reduction in its total crystal-packing interaction surface area (1238&#8197;&#197;<sup>2</sup> for WT PaDsbA1 compared with 1536&#8197;&#197;<sup>2</sup> for WT PaDsbA1; Krissinel &amp; Henrick, 2007<xref ref-type="bibr" rid="bb19"/>). In the new packing configuration, no protein interactions are formed to His39 (Table 3<xref ref-type="table" rid="table3"/>). Furthermore, relative to the WT PaDsbA1 crystals, fewer atoms of the active-site surface loops of the E82I PaDsbA1 variant are engaged in crystal contacts with protein molecules of neighbouring symmetry-related molecules (Figs. 1<xref ref-type="fig" rid="fig1"/>
+               <italic toggle="yes">b</italic> and 1<xref ref-type="fig" rid="fig1"/>
+               <italic toggle="yes">c</italic>, Table 3<xref ref-type="table" rid="table3"/>).</p>
+         </sec>
+         <sec id="sec3.2">
+            <label>3.2</label>
+            <title>The E82I substitution induces a localized conformational change at the N-terminal end of helix 3 but does not affect the active-site surface &#160; </title>
+            <p>Superposition of WT and E82I PaDsbA1 indicates a high degree of global structural similarity (r.m.s.d. of 0.94&#8197;&#197; between 180 equivalent C<sup>&#945;</sup> atoms; Fig. 2<xref ref-type="fig" rid="fig2"/>
+               <italic toggle="yes">a</italic>). Importantly for subsequent fragment-based lead discovery projects, the positioning and conformation of the active-site surface loops is unaltered (Fig. 2<xref ref-type="fig" rid="fig2"/>
+               <italic toggle="yes">a</italic>).</p>
+            <p>As a direct result of the engineered amino-acid substitution, the WT PaDsbA1 and E82I PaDsbA1 structures differ in the conformation of their H2&#8211;H3 connecting loop (Fig. 2<xref ref-type="fig" rid="fig2"/>). Relative to WT PaDsbA1, a rearranged network of hydrogen bonding in E82I PaDsbA1 maintains the stabilization of particular H3 side chains but introduces both a kink and an additional partial helical turn to the N-terminal region of H3 (Figs. 2<xref ref-type="fig" rid="fig2"/>
+               <italic toggle="yes">b</italic> and 2<xref ref-type="fig" rid="fig2"/>
+               <italic toggle="yes">c</italic>). Specifically, in WT PaDsbA1 Glu82 forms a side-chain-mediated hydrogen bond to the N<sup>&#8714;2</sup> atom of the imidazole ring of His91. WT PaDsbA1 His91 is also involved in an additional side-chain contact (<italic toggle="yes">via</italic> its N<sup>&#948;1</sup> atom) to the hydroxyl group of the neighbouring Tyr35 (Fig. 2<xref ref-type="fig" rid="fig2"/>
+               <italic toggle="yes">d</italic>). In E82I PaDsbA1, where the nonpolar aliphatic Ile side chain replaces Glu82, this Glu82-specific stabilization of His91 is lost, and His91 is instead stabilized by side-chain-mediated hydrogen bonds to Glu44 and Glu87 (Fig. 2<xref ref-type="fig" rid="fig2"/>
+               <italic toggle="yes">e</italic>). Furthermore, the side chain of His91 is flipped relative to its orientation in the wild-type protein (Figs. 2<xref ref-type="fig" rid="fig2"/>
+               <italic toggle="yes">d</italic> and 2<xref ref-type="fig" rid="fig2"/>
+               <italic toggle="yes">e</italic>). Glu44 is similarly positioned in both proteins, but in contrast Glu87 undergoes a significant repositioning in the E82I PaDsbA1 variant to mediate contact with His91; in this new orientation Glu87 is also suitably positioned to recapitulate a hydrogen bond to the Tyr35 hydroxyl group previously mediated by His91&#8197;N<sup>&#948;1</sup>. The overall effect of this altered hydrogen-bond network and the repositioning of Glu87 (Figs. 2<xref ref-type="fig" rid="fig2"/>
+               <italic toggle="yes">d</italic> and 2<xref ref-type="fig" rid="fig2"/>
+               <italic toggle="yes">e</italic>) is the introduction of a partial helical turn in H3 as a new main-chain helical hydrogen bond forms between His91 and Glu87. This N-terminal section of H3 forms part of the boundary of a groove on the posterior face of PaDsbA1 (Shouldice <italic toggle="yes">et al.</italic>, 2010<xref ref-type="bibr" rid="bb26"/>); comparison of WT and E82I PaDsbA1 indicate that the posterior groove of both proteins is essentially unchanged.</p>
+         </sec>
+         <sec id="sec3.3">
+            <label>3.3</label>
+            <title>E82I PaDsbA1 exhibits wild-type protein activity and redox character &#160; </title>
+            <p>DsbA proteins catalyze the oxidation of the thiol groups of cysteine residues to form stabilizing disulfide bonds. We measured the redox properties of the E82I PaDsbA1 variant and compared them with those of WT PaDsbA1 to determine whether or not the introduced mutation altered the ability of the protein to catalyze disulfide formation. Crucially, the E82I substitution does not affect protein function or redox character (Fig. 3<xref ref-type="fig" rid="fig3"/>). E82I PaDsbA1 has essentially identical activity to WT PaDsbA1 in both an <italic toggle="yes">in vitro</italic> peptide substrate oxidation assay (Fig. 3<xref ref-type="fig" rid="fig3"/>
+               <italic toggle="yes">a</italic>) and a classical insulin-reduction assay (Fig. 3<xref ref-type="fig" rid="fig3"/>
+               <italic toggle="yes">b</italic>). The E82I PaDsbA1 redox potential is unchanged [<italic toggle="yes">K</italic>
+               <sub>eq</sub> with glutathione of 1.19 &#177; 0.11 &#215; 10<sup>&#8722;5</sup>&#8197;
+               <italic toggle="yes">M</italic> (Fig. 3<xref ref-type="fig" rid="fig3"/>
+               <italic toggle="yes">c</italic>) relative to 9.96 &#177; 0.88 &#215;10<sup>&#8722;6</sup>&#8197;
+               <italic toggle="yes">M</italic> for WT PaDsbA]. This equates to redox potentials of &#8722;92 and &#8722;94&#8197;mV, respectively.</p>
+         </sec>
+         <sec id="sec3.4">
+            <label>3.4</label>
+            <title>Crystal structures of E82I PaDsbA1 with three cryoprotectants &#160; </title>
+            <p>During the initial characterization of the E82I PaDsbA1 variant crystals, we explored a number of cryoprotectants to identify which was optimal for crystal cryocooling. In all, we determined the crystal structures of E82I PaDsbA1 cryoprotected with 40% PEG 400 (crystal 1, Table 1<xref ref-type="table" rid="table1"/>, PDB entry <ext-link ext-link-type="uri" xlink:href="https://scripts.iucr.org/cgi-bin/cr.cgi?rm=pdb&amp;pdbId=4zl7">4zl7</ext-link>), 20% glycerol (crystal 2, Table 1<xref ref-type="table" rid="table1"/>, PDB entry <ext-link ext-link-type="uri" xlink:href="https://scripts.iucr.org/cgi-bin/cr.cgi?rm=pdb&amp;pdbId=4zl8">4zl8</ext-link>) and 20% ethylene glycol (crystal 3, Table 1<xref ref-type="table" rid="table1"/>, PDB entry <ext-link ext-link-type="uri" xlink:href="https://scripts.iucr.org/cgi-bin/cr.cgi?rm=pdb&amp;pdbId=4zl9">4zl9</ext-link>). All three structures were determined at high resolution (in the range 1.4&#8211;1.9&#8197;&#197;) and were of comparable quality, although we note that the glycerol-cryoprotected crystals yielded the highest resolution diffraction data (Table 1<xref ref-type="table" rid="table1"/>).</p>
+            <sec id="sec3.4.1">
+               <label>3.4.1</label>
+               <title>E82I PaDsbA1 can bind PEG molecules on its noncatalytic surface &#160; </title>
+               <p>A molecule of hexaethylene glycol (polyethylene glycol, PEG 400), which was used as a cryoprotectant during crystal cryocooling, is found in the electron-density map of E82I PaDsbA1 crystal 1. PEG 400 is bound at the C-terminal end of H1 (Fig. 4<xref ref-type="fig" rid="fig4"/>
+                  <italic toggle="yes">a</italic>). The molecule adopts a horseshoe configuration encircling the side chain of Lys53 (Fig. 4<xref ref-type="fig" rid="fig4"/>
+                  <italic toggle="yes">b</italic>). Electron density is sharply resolved for the majority of the molecule, where it is in closest proximity to Lys53, but is poorly resolved for the first two ethylene glycol monomer units of the molecule (Fig. 4<xref ref-type="fig" rid="fig4"/>
+                  <italic toggle="yes">b</italic>); accordingly, atoms O1&#8211;C5 inclusive have elevated <italic toggle="yes">B</italic> factors with respect to the rest of the non-H atoms of the bound PEG 400. Two O atoms of PEG 400 make hydrogen-bonded contacts to Lys53&#8197;NZ: O10 and O16 (distances of 2.87 and 3.05&#8197;&#197;, respectively). PEG 400 makes additional contacts to Pro49, Trp50, Leu54 and Pro55 of H1 and Asp180 of H7.</p>
+               <p>We note that PEG 400 binds in a similar vicinity to that of a glycerol molecule (Glyc-3) resolved in the structure of WT PaDsbA1 (Shouldice <italic toggle="yes">et al.</italic>, 2010<xref ref-type="bibr" rid="bb26"/>); in this structure Glyc-3 is positioned towards the C-terminal end of H1 between H1 and H7 within hydrogen-bonding distance of the side chains of H7 residues Asp180 and Arg187. As noted previously, this area is rich in acidic and basic residues (Shouldice <italic toggle="yes">et al.</italic>, 2010<xref ref-type="bibr" rid="bb26"/>), and in crystal 3 (current study) a further PEG molecule from the crystallization condition can also be resolved near Asp187 and Glu184 of H7.</p>
+            </sec>
+            <sec id="sec3.4.2">
+               <label>3.4.2</label>
+               <title>E82I PaDsbA1 binds several small molecules at its active site &#160; </title>
+               <p>E82I PaDsbA1 can also bind several small molecules directly on the catalytic face of the protein. In the crystal structures of the E82I PaDsbA1 variant cryocooled with either glycerol (crystal 2) or ethylene glycol (crystal 3), His39 in the active site makes electrostatic and hydrogen-bond contacts with a molecule of the respective cryoprotectant and also a molecule of 2-(<italic toggle="yes">N</italic>-morpholino)ethanesulfonic acid (MES). MES, which is presumably derived from the crystallization condition common to all three crystals, is not resolved in crystal 1, where His39 makes no apparent contacts to a component of the mother liquor or cryoprotectant.</p>
+               <p>In crystals 2 and 3, the orientation of the His39 imidazole ring is rotated relative to its position in the WT PaDsbA1 and PEG 400 cryocooled structures (crystal 1, present work; Fig. 5<xref ref-type="fig" rid="fig5"/>). It has been observed previously that the active-site histidine in <italic toggle="yes">E. coli</italic> DsbA can adopt a number of positions depending on the crystal form and the protein redox state (Guddat <italic toggle="yes">et al.</italic>, 1998<xref ref-type="bibr" rid="bb13"/>). We suggest that in this case the observed reorientation of His39 is a direct consequence of glycerol or ethylene glycol binding, and that this in turn brings His39 into an orientation that is permissive for a stable interaction with MES.</p>
+               <p>The bound molecules of MES and cryoprotectant (glycerol or ethylene glycol) are each involved in numerous side-chain-mediated and main-chain-mediated hydrogen-bond inter&#173;actions with residues of the active-site surface loops (CPHC loop, <italic toggle="yes">cis</italic>-Pro L2 and L3; Fig. 6<xref ref-type="fig" rid="fig6"/>). In crystal 2, three molecules (two glycerols and one MES) decorate the active-site loops, variously contacting Cys37, Pro38 and His39 (CPHC), Thr151, Gly152 and Val163 (cisPro L2), and Ile166 and Gly167 (L3) (Figs. 6<xref ref-type="fig" rid="fig6"/>
+                  <italic toggle="yes">b</italic>, 6<xref ref-type="fig" rid="fig6"/>
+                  <italic toggle="yes">c</italic> and 6<xref ref-type="fig" rid="fig6"/>
+                  <italic toggle="yes">d</italic>). Together, this provides a serendipitous proof of principle that in the engineered E82I PaDsbA1 variant the active site is available to small molecules that are both present during crystallization (<italic toggle="yes">i.e.</italic> MES) and introduced <italic toggle="yes">via</italic> soaking (<italic toggle="yes">i.e.</italic> cryoprotectant glycerol).</p>
+            </sec>
+         </sec>
+      </sec>
+      <sec id="sec4">
+         <label>4</label>
+         <title>Conclusion &#160; </title>
+         <p>
+            <italic toggle="yes">P. aeruginosa</italic> is a common cause of hospital-acquired infections (Rosenthal <italic toggle="yes">et al.</italic>, 2012<xref ref-type="bibr" rid="bb25"/>). In the USA, 13% of severe nosocomial <italic toggle="yes">P. aeruginosa</italic> infections are multidrug-resistant, meaning that all or nearly all currently available antibiotics are ineffective as treatments (Centers for Disease Control and Prevention, 2013<xref ref-type="bibr" rid="bb5"/>). &#8216;Prompt and sustained action&#8217; including the development of new drugs is required to counter, and prevent the escalation of, the threat to public health (Centers for Disease Control and Prevention, 2013<xref ref-type="bibr" rid="bb5"/>). DsbA is essential for multiple facets of <italic toggle="yes">P. aeruginosa</italic> virulence and is a highly promising target for new drug development. DsbA inhibitors would disrupt bacterial virulence rather than growth, serving as potent anti-infectives whilst exerting a reduced selection pressure to develop resistance (Heras <italic toggle="yes">et al.</italic>, 2015<xref ref-type="bibr" rid="bb15"/>).</p>
+         <p>WT PaDsbA1 did not give crystals that were amenable for use in a fragment-screening approach. Here, we have generated a variant of PaDsbA1 to disrupt an active-site residue-mediated crystal contact. Whilst there are localized conformational changes to the N-terminal end of H3 of the variant protein E82I PaDsbA1, the active-site surface of the protein (CPHC, L1, <italic toggle="yes">cis</italic>-Pro L2 and L3) is unchanged, and crucially the protein activity and redox character are essentially identical to those of the wild type. In the identified crystal form of E82I PaDsbA1, the active-site region can simultaneously bind multiple ligands derived from the crystallization condition and cryoprotectant solution, indicating that the new crystal form is suitable for use in subsequent FBLD campaigns to characterize small-molecule binders of this important mediator of bacterial virulence.</p>
+         <p>In the early stages of fragment-based lead discovery campaigns, hit fragments typically exhibit low-affinity binding to their target. This presents an inherent challenge to obtaining protein&#8211;fragment crystal structures, in which a high occupancy of fragment in the crystal at the binding site is essential to resolve the corresponding electron density. It follows that to maximize the chances of successful soaking experiments one should avoid the potential for competition from other molecules that may also bind at the target site in the crystal. For this reason, we suggest that crystal 1 is the most suitable for subsequent structural and fragment-based lead discovery experiments, as either glycerol or ethylene glycol may directly or indirectly compete for fragment binding in this region.</p>
+      </sec>
+   </body>
+   <back>
+      <sec id="table-wraps" sec-type="display-objects">
+         <title>Figures and Tables</title>
+         <fig id="fig1" position="float" orientation="portrait">
+            <label>Figure 1</label>
+            <caption>
+               <p>Site-directed mutagenesis disrupts crystal packing involving active-site surface loops. (<italic toggle="yes">a</italic>) Sequence alignment of <italic toggle="yes">P. aeruginosa</italic> DsbA1 with homologues from <italic toggle="yes">E. coli</italic>, <italic toggle="yes">K. pneumoniae</italic> and <italic toggle="yes">V. cholerae</italic> to identify a suitable nonpolar amino-acid substitution for Glu82 in <italic toggle="yes">P. aeruginosa</italic> (marked with an asterisk). The figure was generated using <italic toggle="yes">ESPript</italic>3 (Robert &amp; Gouet, 2014<xref ref-type="bibr" rid="bb24"/>). Comparison of symmetry-related molecule packing in crystals of WT PaDsbA1 (<italic toggle="yes">b</italic>) (blue) and E82I PaDsbA1 (<italic toggle="yes">c</italic>) (orange) indicates reduced involvement of the active-site surface loops (shown in red for each protein) in packing interactions in E82I PaDsbA1 relative to WT PaDsbA1.</p>
+            </caption>
+            <graphic xlink:href="d-71-02386-fig1.tif" position="float" orientation="portrait"/>
+         </fig>
+         <fig id="fig2" position="float" orientation="portrait">
+            <label>Figure 2</label>
+            <caption>
+               <p>WT and E82I PaDsbA1 have a high degree of global structural equivalence with localized conformational differences. (<italic toggle="yes">a</italic>) Structural superposition of E82I PaDsbA1 (global superposition over all equivalent C<sup>&#945;</sup> atoms) on WT PaDsbA1 (PDB entry <ext-link ext-link-type="uri" xlink:href="https://scripts.iucr.org/cgi-bin/cr.cgi?rm=pdb&amp;pdbId=3h93">3h93</ext-link>) shows a high similarity (r.m.s.d. of 0.94&#8197;&#197; between 180 equivalent C<sup>&#945;</sup> atoms). WT and E82I PaDsbA1 are coloured blue and orange, respectively, throughout. The connecting &#945;-helix H6 in both WT and E82I PaDsbA1 overlaps precisely, and the thioredoxin domain also superimposes well. The main differences between the two structures localize primarily in the H2&#8211;H3 turn and N-terminal region of H3. The catalytic surface loops (CHPC active site, L1, <italic toggle="yes">cis</italic>-Pro L2 and L3) are highlighted (blue and orange for WT and E82I PaDsbA1, respectively). The side chain of active-site His39 that undergoes rotation in crystals 2 and 3 relative to crystal 1 and WT PaDsbA1 is shown in stick representation. (<italic toggle="yes">b</italic>, <italic toggle="yes">c</italic>) Close-up view of the H2&#8211;H3 turn and N-terminal region of H3. The view in (<italic toggle="yes">c</italic>) is rotated 180&#176; around the <italic toggle="yes">y</italic> axis relative to (<italic toggle="yes">a</italic>) and that in (<italic toggle="yes">b</italic>) is rotated 45&#176; around the <italic toggle="yes">x</italic> axis relative to (<italic toggle="yes">c</italic>). The E82I substitution disrupts the hydrogen-bonding pattern in this region, which introduces a kink and a partial helical turn to the N-terminal part of H3 in the E82I structure relative to the wild type. (<italic toggle="yes">d</italic>) Hydrogen-bonding pattern in the H2&#8211;H3 region of PaDsbA1. The side chain of His91 is hydrogen-bonded to the side chains of Glu82 and Tyr35. (<italic toggle="yes">e</italic>) Hydrogen-bonding pattern in the H2&#8211;H3 region of E82I PaDsbA1. Mutation of Glu82 to Ile results in the reorientation of His91, Glu87 and Glu44. In the E82I variant protein the side chain of His91 is connected by hydrogen bonds to the side chains of Glu87 and Glu44. (<italic toggle="yes">d</italic>) and (<italic toggle="yes">e</italic>) are orientated as in (<italic toggle="yes">c</italic>).</p>
+            </caption>
+            <graphic xlink:href="d-71-02386-fig2.tif" position="float" orientation="portrait"/>
+         </fig>
+         <fig id="fig3" position="float" orientation="portrait">
+            <label>Figure 3</label>
+            <caption>
+               <p>E82I PaDsbA1 exhibits wild-type protein activity and redox character. (<italic toggle="yes">a</italic>) WT and E82I PaDsbA1, in the presence of 2&#8197;m<italic toggle="yes">M</italic> oxidized glutathione, display a similar rate of oxidation of a fluorescently labelled peptide substrate. Reactions lacking glutathione, a protein catalyst or containing only buffer display negligible activity. The mean and SEM of four (WT) and three (E82I) independent biological replicates are plotted. For GSSG and buffer-only controls <italic toggle="yes">n</italic>&#160;=&#160;1. (<italic toggle="yes">b</italic>) The disulfide reductase activity of WT and E82I PaDsbA1 was assessed using an insulin-reduction assay. WT (blue) and E82I (orange) PaDsbA1 catalyze the reduction of insulin in the presence of DTT to a similar extent. The mean and SEM of three independent biological replicates are&#160;plotted. (<italic toggle="yes">c</italic>) The fraction of oxidized and reduced E82I PaDsbA1 after equilibrium in redox buffers containing varying ratios of reduced glutathione:oxidized glutathione at pH 7.0 and 310&#8197;K was determined from the redox state-dependent fluorescence of PaDsbA1. These data were used to calculate <italic toggle="yes">K</italic>
+                  <sub>eq</sub> and subsequently the redox potential. Representative data of a single experiment of six performed are shown, plotted on a semi-log graph using a base 10 logarithmic scale for the <italic toggle="yes">x</italic> axis and a linear scale for the <italic toggle="yes">y</italic> axis. For final redox potential determination, mean and SEM were calculated (<italic toggle="yes">n</italic>&#160;=&#160;6).</p>
+            </caption>
+            <graphic xlink:href="d-71-02386-fig3.tif" position="float" orientation="portrait"/>
+         </fig>
+         <fig id="fig4" position="float" orientation="portrait">
+            <label>Figure 4</label>
+            <caption>
+               <p>E82I PaDsbA1 binds a molecule of PEG 400 on its noncatalytic surface. (<italic toggle="yes">a</italic>) A PEG 400 molecule (yellow sticks) binds at the C-terminal end of H1, making hydrogen-bond interactions with the side chain of Lys53 (<italic toggle="yes">b</italic>). The OMIT map for PEG 400 is shown (<italic toggle="yes">F</italic>
+                  <sub>o</sub> &#8722; <italic toggle="yes">F</italic>
+                  <sub>c</sub> map contoured at 3&#963; obtained after refinement of the model in which the PEG 400 molecule was omitted).</p>
+            </caption>
+            <graphic xlink:href="d-71-02386-fig4.tif" position="float" orientation="portrait"/>
+         </fig>
+         <fig id="fig5" position="float" orientation="portrait">
+            <label>Figure 5</label>
+            <caption>
+               <p>Rotation of the His39 side chain in response to small-molecule binding. (<italic toggle="yes">a</italic>) In the presence of glycerol (magenta) or ethylene glycol (green), the His39 side chain is rotated relative to its position in the crystal structures of either WT PaDsbA1 (blue) or E82I PaDsbA1 (orange) in the absence of a small molecule at the active site. (<italic toggle="yes">b</italic>) Glycerol (GOL) and ethylene glycol (EDO) bind at the same site in E82I PaDsbA1 and make equivalent hydrogen-bond contacts to His39.</p>
+            </caption>
+            <graphic xlink:href="d-71-02386-fig5.tif" position="float" orientation="portrait"/>
+         </fig>
+         <fig id="fig6" position="float" orientation="portrait">
+            <label>Figure 6</label>
+            <caption>
+               <p>E82I PaDsbA1 binds several small molecules directly at its active site. (<italic toggle="yes">a</italic>) Three small molecules, MES (green) and glycerol (GOL; pink), are clearly resolved in the electron-density map of crystal 2 and make hydrogen-bond interactions with the CPHC active site and loops of the PaDsbA1 active-site surface (L1 linking &#946;3 and H2, <italic toggle="yes">cis</italic>-Pro L2 linking H6 and &#946;4, and L3 linking &#946;5 and H7). The 2<italic toggle="yes">F</italic>
+                  <sub>o</sub> &#8722; <italic toggle="yes">F</italic>
+                  <sub>c</sub> electron-density maps for each molecule were generated from calculated phases using <italic toggle="yes">phenix.maps</italic> and are shown contoured at 1.0&#963;. The maps are shown within a 1&#8197;&#197; radius of each atom of MES or glycerol. (<italic toggle="yes">b</italic>) <italic toggle="yes">LIGPLOT</italic> representation of the environment of MES and (<italic toggle="yes">c</italic>, <italic toggle="yes">d</italic>) neighbouring glycerols in crystal 2.</p>
+            </caption>
+            <graphic xlink:href="d-71-02386-fig6.tif" position="float" orientation="portrait"/>
+         </fig>
+         <table-wrap id="table1" position="float" orientation="portrait">
+            <label>Table 1</label>
+            <caption>
+               <title>Data collection and processing</title>
+               
+            </caption>
+            <table frame="hsides" rules="groups">
+               <thead valign="bottom">
+                  <tr>
+                     <th style="border-bottom:1px solid black;" rowspan="1" colspan="1" align="left" valign="top">&#160;</th>
+                     <th style="border-bottom:1px solid black;" rowspan="1" colspan="1" align="left" valign="top">Crystal 1</th>
+                     <th style="border-bottom:1px solid black;" rowspan="1" colspan="1" align="left" valign="top">Crystal 2</th>
+                     <th style="border-bottom:1px solid black;" rowspan="1" colspan="1" align="left" valign="top">Crystal 3</th>
+                  </tr>
+               </thead>
+               <tbody valign="top">
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">PDB code</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">
+                        <ext-link ext-link-type="uri" xlink:href="https://scripts.iucr.org/cgi-bin/cr.cgi?rm=pdb&amp;pdbId=4zl7">4zl7</ext-link>
+                     </td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">
+                        <ext-link ext-link-type="uri" xlink:href="https://scripts.iucr.org/cgi-bin/cr.cgi?rm=pdb&amp;pdbId=4zl8">4zl8</ext-link>
+                     </td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">
+                        <ext-link ext-link-type="uri" xlink:href="https://scripts.iucr.org/cgi-bin/cr.cgi?rm=pdb&amp;pdbId=4zl9">4zl9</ext-link>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">Cryoprotectant</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">40% PEG 400</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">20% glycerol</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">20% ethylene glycol</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">Wavelength (&#197;)</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">0.95370</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">0.95370</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">0.95370</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">Resolution range (&#197;)</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">41.26&#8211;1.92 (2.03&#8211;1.92)</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">34.91&#8211;1.40 (1.45&#8211;1.40)</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">41.66&#8211;1.70 (1.76&#8211;1.70)</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">Space group</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">
+                        <italic toggle="yes">P</italic>2<sub>1</sub>
+                     </td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">
+                        <italic toggle="yes">P</italic>2<sub>1</sub>
+                     </td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">
+                        <italic toggle="yes">P</italic>2<sub>1</sub>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">Unit-cell parameters (&#197;, &#176;)</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">
+                        <italic toggle="yes">a</italic> = 35.3, <italic toggle="yes">b</italic> = 62.3, <italic toggle="yes">c</italic> = 41.6, &#945; = 90.0, &#946; = 97.6, &#947; = 90.0</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">
+                        <italic toggle="yes">a</italic> = 35.3, <italic toggle="yes">b</italic> = 63.7, <italic toggle="yes">c</italic> = 42.0, &#945; = 90.0, &#946; = 98.3, &#947; = 90.0</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">
+                        <italic toggle="yes">a</italic> = 35.4, <italic toggle="yes">b</italic> = 62.9, <italic toggle="yes">c</italic> = 42.1, &#945; = 90.0, &#946; = 98.2, &#947; = 90.0</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">
+                        <italic toggle="yes">R</italic>
+                        <sub>merge</sub>
+                     </td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">0.081 (0.405)</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">0.080 (0.361)</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">0.110 (0.763)</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">Total No. of observations</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">47377 (6746)</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">132345 (18730)</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">72341 (10588)</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">Total No. unique</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">13668 (1981)</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">36539 (5334)</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">19942 (2863)</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">Mean <italic toggle="yes">I</italic>/&#963;(<italic toggle="yes">I</italic>)</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">9.9 (2.6)</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">9.7 (3.2)</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">7.8 (1.9)</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">Completeness (%)</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">99.6 (99.5)</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">99.8 (99.9)</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">99.1 (98.2)</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">Multiplicity</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">3.5 (3.4)</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">3.6 (3.5)</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">3.6 (3.7)</td>
+                  </tr>
+               </tbody>
+            </table>
+         </table-wrap>
+         <table-wrap id="table2" position="float" orientation="portrait">
+            <label>Table 2</label>
+            <caption>
+               <title>Refinement and model quality</title>
+               <p>Values in parentheses are for the highest resolution shell.</p>
+            </caption>
+            <table frame="hsides" rules="groups">
+               <thead valign="bottom">
+                  <tr>
+                     <th style="border-bottom:1px solid black;" rowspan="1" colspan="1" align="left" valign="top">&#160;</th>
+                     <th style="border-bottom:1px solid black;" rowspan="1" colspan="1" align="left" valign="top">Crystal 1</th>
+                     <th style="border-bottom:1px solid black;" rowspan="1" colspan="1" align="left" valign="top">Crystal 2</th>
+                     <th style="border-bottom:1px solid black;" rowspan="1" colspan="1" align="left" valign="top">Crystal 3</th>
+                  </tr>
+               </thead>
+               <tbody valign="top">
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">
+                        <italic toggle="yes">R</italic> factor (%)</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">15.90 (19.76)</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">14.60 (20.57)</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">15.92 (23.32)</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">
+                        <italic toggle="yes">R</italic>
+                        <sub>free</sub>
+                        <xref ref-type="table-fn" rid="tfn1">&#8224;</xref> (%)</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">20.21 (23.92)</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">15.94 (24.36)</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">20.07 (27.03)</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="4" align="left" valign="top">No. of atoms</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">&#8195;Total</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">3074</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">3284</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">3227</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">&#8195;Macromolecules</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">1475</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">1494</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">1476</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">&#8195;Ligands</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">19</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">36</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">29</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">&#8195;Water</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">111</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">205</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">222</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">No. of protein residues</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">185</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">187</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">187</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">R.m.s.d., bonds (&#197;)</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">0.012</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">0.009</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">0.010</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">R.m.s.d., angles (&#176;)</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">1.34</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">1.29</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">1.27</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">Ramachandran favoured (%)</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">98</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">99</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">99</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">Ramachandran outliers (%)</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">0</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">0</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">0</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">
+                        <italic toggle="yes">MolProbity</italic> clashscore</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">5.4</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">1.32</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">3.67</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">&#8195;Percentile<xref ref-type="table-fn" rid="tfn2">&#8225;</xref>
+                     </td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">96th [<italic toggle="yes">N</italic> = 743, 1.922 &#177; 0.25&#8197;&#197;]</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">99th [<italic toggle="yes">N</italic> = 453, 1.395 &#177; 0.25&#8197;&#197;]</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">97th [<italic toggle="yes">N</italic> = 819, 1.700 &#177; 0.25&#8197;&#197;]</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">
+                        <italic toggle="yes">MolProbity</italic> overall score</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">1.29</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">0.85</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">1.16</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">&#8195;Percentile<xref ref-type="table-fn" rid="tfn2">&#8225;</xref>
+                     </td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">99th [<italic toggle="yes">N</italic> = 11840, 1.922 &#177; 0.25&#8197;&#197;]</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">100th [<italic toggle="yes">N</italic> = 3078, 1.395 &#177; 0.25&#8197;&#197;]</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">99th [<italic toggle="yes">N</italic> = 9248, 1.700 &#177; 0.25&#8197;&#197;]</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="4" align="left" valign="top">Average <italic toggle="yes">B</italic> factor (&#197;<sup>2</sup>)</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">&#8195;Protein</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">20.7</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">17.6</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">17.7</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">&#8195;Ligand</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">45.3</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">24.1</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">41.1</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">&#8195;Solvent</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">27.7</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">28.7</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">26.8</td>
+                  </tr>
+               </tbody>
+            </table>
+            <table-wrap-foot>
+               <fn id="tfn1">
+                  <label>&#8224;</label>
+                  <p>
+                     <italic toggle="yes">R</italic>
+                     <sub>free</sub> was calculated with 5% of the data set.</p>
+               </fn>
+               <fn id="tfn2">
+                  <label>&#8225;</label>
+                  <p>The 100th percentile is the best among structures of comparable resolution; the 0th percentile is the worst. For the <italic toggle="yes">MolProbity</italic> clashscore the comparative set of structures was selected in 2004; that for the <italic toggle="yes">MolProbity</italic> score was selected in 2006.</p>
+               </fn>
+            </table-wrap-foot>
+         </table-wrap>
+         <table-wrap id="table3" position="float" orientation="portrait">
+            <label>Table 3</label>
+            <caption>
+               <title>Number of active-site surface-loop residues involved in crystal-packing interactions in WT and E82I PaDsbA1 crystals</title>
+               <p>Crystal contacts were identified using <italic toggle="yes">CONTACT</italic> within the <italic toggle="yes">CCP</italic>4 suite (Winn <italic toggle="yes">et al.</italic>, 2011<xref ref-type="bibr" rid="bb29"/>), searching for symmetry contacts &#8804;4&#8197;&#197; to protein atoms only. Atoms within hydrogen-bond contact distance of a suitable hydrogen-bond donor/acceptor are shown. The key His39 to Glu82<sub>sym</sub> contact in WT PaDsbA1 is italicized.</p>
+            </caption>
+            <table frame="hsides" rules="groups">
+               <thead valign="bottom">
+                  <tr>
+                     <th rowspan="1" colspan="1" align="left" valign="bottom">&#160;</th>
+                     <th style="border-bottom:1px solid black;" rowspan="1" colspan="3" align="left" valign="bottom">WT PaDsbA1</th>
+                     <th style="border-bottom:1px solid black;" rowspan="1" colspan="3" align="left" valign="bottom">E82I PaDsbA1</th>
+                  </tr>
+                  <tr>
+                     <th style="border-bottom:1px solid black;" rowspan="1" colspan="1" align="left" valign="bottom">&#160;</th>
+                     <th style="border-bottom:1px solid black;" rowspan="1" colspan="1" align="left" valign="bottom">No. of residues</th>
+                     <th style="border-bottom:1px solid black;" rowspan="1" colspan="1" align="left" valign="bottom">Residue name</th>
+                     <th style="border-bottom:1px solid black;" rowspan="1" colspan="1" align="left" valign="bottom">Hydrogen-bond contact</th>
+                     <th style="border-bottom:1px solid black;" rowspan="1" colspan="1" align="left" valign="bottom">No. of residues</th>
+                     <th style="border-bottom:1px solid black;" rowspan="1" colspan="1" align="left" valign="bottom">Residue name</th>
+                     <th style="border-bottom:1px solid black;" rowspan="1" colspan="1" align="left" valign="bottom">Hydrogen-bond contact</th>
+                  </tr>
+               </thead>
+               <tbody valign="top">
+                  <tr>
+                     <td rowspan="3" colspan="1" align="left" valign="top">CHPC</td>
+                     <td rowspan="3" colspan="1" align="left" valign="top">3</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">Trp34 </td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">&#8212;</td>
+                     <td rowspan="3" colspan="1" align="left" valign="top">3</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">Trp34 </td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">&#8212;</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">Cys37 </td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">&#8212;</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">Gly36 </td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">&#8212;</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">
+                        <italic toggle="yes">His39 </italic>
+                     </td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">
+                        <italic toggle="yes">Glu82<sub>sym</sub> (2.88&#8197;&#197;)</italic>
+                     </td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">Pro38 </td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">&#8212;</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="2" colspan="1" align="left" valign="top">Loop 1</td>
+                     <td rowspan="2" colspan="1" align="left" valign="top">1</td>
+                     <td rowspan="2" colspan="1" align="left" valign="top">Phe67 </td>
+                     <td rowspan="2" colspan="1" align="left" valign="top">&#8212;</td>
+                     <td rowspan="2" colspan="1" align="left" valign="top">2</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">Gly69 </td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">&#8212;</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">Ile70 </td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">&#8212;</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="4" colspan="1" align="left" valign="top">
+                        <italic toggle="yes">cis</italic>-Pro loop (loop 2)</td>
+                     <td rowspan="4" colspan="1" align="left" valign="top">4</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">Val150 </td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">&#8212;</td>
+                     <td rowspan="4" colspan="1" align="left" valign="top">&#8212;</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">&#8212;</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">&#8212;</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">Thr151 </td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">Thr128<sub>sym</sub> (3.25&#8197;&#197;)</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">&#8212;</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">&#8212;</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">Gly152 </td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">&#8212;</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">&#8212;</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">&#8212;</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">Val153 </td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">Ser83<sub>sym</sub> (3.25&#8197;&#197;)</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">&#8212;</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">&#8212;</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="3" colspan="1" align="left" valign="top">Loop 3</td>
+                     <td rowspan="3" colspan="1" align="left" valign="top">3</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">Asp165 </td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">&#8212;</td>
+                     <td rowspan="3" colspan="1" align="left" valign="top">&#8212;</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">&#8212;</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">&#8212;</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">Gly167 </td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">&#8212;</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">&#8212;</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">&#8212;</td>
+                  </tr>
+                  <tr>
+                     <td rowspan="1" colspan="1" align="left" valign="top">Ser168 </td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">&#8212;</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">&#8212;</td>
+                     <td rowspan="1" colspan="1" align="left" valign="top">&#8212;</td>
+                  </tr>
+               </tbody>
+            </table>
+         </table-wrap>
+      </sec>
+      <ack>
+         <p>During the course of this work, JLM was an Australian Research Council Laureate Fellow (FL0992138) and RMM, MC, ST and BH were supported by this award. RMM, MC and ST were also supported by an Australian Research Council Linkage Grant () held by MJS, CJM and JLM. We thank the staff and facilities of the University of Queensland Remote Operation Crystallization and X-ray (UQ ROCX) facility for their support. We acknowledge use of the Australian Synchrotron and in particular we thank the beamline scientists Christine Gee and Tom Caradoc-Davies for their assistance.</p>
+      </ack>
+      <ref-list>
+         <title>References</title>
+         <ref id="bb1">
+            <mixed-citation publication-type="other">Adams, L. A. <italic toggle="yes">et al.</italic> (2015). <italic toggle="yes">Angew. Chem. Int. Ed.</italic> 
+               <bold>54</bold>, 2179&#8211;2184.</mixed-citation>
+         </ref>
+         <ref id="bb2">
+            <mixed-citation publication-type="other">Afonine, P. V., Grosse-Kunstleve, R. W., Echols, N., Headd, J. J., Moriarty, N. W., Mustyakimov, M., Terwilliger, T. C., Urzhumtsev, A., Zwart, P. H. &amp; Adams, P. D. (2012). <italic toggle="yes">Acta Cryst.</italic> D<bold>68</bold>, 352&#8211;367.</mixed-citation>
+         </ref>
+         <ref id="bb3">
+            <mixed-citation publication-type="other">Battye, T. G. G., Kontogiannis, L., Johnson, O., Powell, H. R. &amp; Leslie, A. G. W. (2011). <italic toggle="yes">Acta Cryst.</italic> D<bold>67</bold>, 271&#8211;281.</mixed-citation>
+         </ref>
+         <ref id="bb4">
+            <mixed-citation publication-type="other">Braun, P., Ockhuijsen, C., Eppens, E., Koster, M., Bitter, W. &amp; Tommassen, J. (2001). <italic toggle="yes">J. Biol. Chem.</italic> 
+               <bold>276</bold>, 26030&#8211;26035.</mixed-citation>
+         </ref>
+         <ref id="bb5">
+            <mixed-citation publication-type="other">Centers for Disease Control and Prevention (2013). <italic toggle="yes">Antibiotic Resistance Threats in the United States, 2013</italic>. Atlanta: Centers for Disease Control and Prevention. http://www.cdc.gov/drugresistance/threat-report-2013/.</mixed-citation>
+         </ref>
+         <ref id="bb6">
+            <mixed-citation publication-type="other">Chen, V. B., Arendall, W. B., Headd, J. J., Keedy, D. A., Immormino, R. M., Kapral, G. J., Murray, L. W., Richardson, J. S. &amp; Richardson, D. C. (2010). <italic toggle="yes">Acta Cryst.</italic> D<bold>66</bold>, 12&#8211;21.</mixed-citation>
+         </ref>
+         <ref id="bb7">
+            <mixed-citation publication-type="other">Dacheux, D., Epaulard, O., de Groot, A., Guery, B., Leberre, R., Attree, I., Polack, B. &amp; Toussaint, B. (2002). <italic toggle="yes">Infect. Immun.</italic> 
+               <bold>70</bold>, 3973&#8211;3977.</mixed-citation>
+         </ref>
+         <ref id="bb8">
+            <mixed-citation publication-type="other">Ellman, G. L., Courtney, K. D., Andres, V. Jr &amp; Featherstone, R. M. (1961). <italic toggle="yes">Biochem. Pharmacol.</italic> 
+               <bold>7</bold>, 88&#8211;95.</mixed-citation>
+         </ref>
+         <ref id="bb9">
+            <mixed-citation publication-type="other">Emsley, P. &amp; Cowtan, K. (2004). <italic toggle="yes">Acta Cryst.</italic> D<bold>60</bold>, 2126&#8211;2132.</mixed-citation>
+         </ref>
+         <ref id="bb10">
+            <mixed-citation publication-type="other">Erlanson, D. A. (2012). <italic toggle="yes">Top. Curr. Chem.</italic> 
+               <bold>317</bold>, 1&#8211;32.</mixed-citation>
+         </ref>
+         <ref id="bb11">
+            <mixed-citation publication-type="other">Evans, P. (2006). <italic toggle="yes">Acta Cryst.</italic> D<bold>62</bold>, 72&#8211;82.</mixed-citation>
+         </ref>
+         <ref id="bb12">
+            <mixed-citation publication-type="other">Evans, P. R. (2011). <italic toggle="yes">Acta Cryst.</italic> D<bold>67</bold>, 282&#8211;292.</mixed-citation>
+         </ref>
+         <ref id="bb31">
+            <mixed-citation publication-type="other">Evans, P. R. &amp; Murshudov, G. N. (2013). <italic toggle="yes">Acta Cryst.</italic> D<bold>69</bold>, 1204&#8211;1214.</mixed-citation>
+         </ref>
+         <ref id="bb13">
+            <mixed-citation publication-type="other">Guddat, L. W., Bardwell, J. C. &amp; Martin, J. L. (1998). <italic toggle="yes">Structure</italic>, <bold>6</bold>, 757&#8211;767.</mixed-citation>
+         </ref>
+         <ref id="bb14">
+            <mixed-citation publication-type="other">Ha, U.-H., Wang, Y. &amp; Jin, S. (2003). <italic toggle="yes">Infect. Immun.</italic> 
+               <bold>71</bold>, 1590&#8211;1595.</mixed-citation>
+         </ref>
+         <ref id="bb15">
+            <mixed-citation publication-type="other">Heras, B., Scanlon, M. J. &amp; Martin, J. L. (2015). <italic toggle="yes">Br. J. Clin. Pharmacol.</italic> 
+               <bold>79</bold>, 208&#8211;215.</mixed-citation>
+         </ref>
+         <ref id="bb16">
+            <mixed-citation publication-type="other">Heras, B., Shouldice, S. R., Totsika, M., Scanlon, M. J., Schembri, M. A. &amp; Martin, J. L. (2009). <italic toggle="yes">Nature Rev. Microbiol.</italic> 
+               <bold>7</bold>, 215&#8211;225.</mixed-citation>
+         </ref>
+         <ref id="bb17">
+            <mixed-citation publication-type="other">Holmgren, A. (1979). <italic toggle="yes">J. Biol. Chem.</italic> 
+               <bold>254</bold>, 9627&#8211;9632.</mixed-citation>
+         </ref>
+         <ref id="bb18">
+            <mixed-citation publication-type="other">Ireland, P. M., McMahon, R. M., Marshall, L. E., Halili, M., Furlong, E., Tay, S., Martin, J. L. &amp; Sarkar-Tyson, M. (2014). <italic toggle="yes">Antioxid. Redox Signal.</italic> 
+               <bold>20</bold>, 606&#8211;617.</mixed-citation>
+         </ref>
+         <ref id="bb19">
+            <mixed-citation publication-type="other">Krissinel, E. &amp; Henrick, K. (2007). <italic toggle="yes">J. Mol. Biol.</italic> 
+               <bold>372</bold>, 774&#8211;797.</mixed-citation>
+         </ref>
+         <ref id="bb20">
+            <mixed-citation publication-type="other">Martin, J. L., Bardwell, J. C. &amp; Kuriyan, J. (1993). <italic toggle="yes">Nature (London)</italic>, <bold>365</bold>, 464&#8211;468.</mixed-citation>
+         </ref>
+         <ref id="bb21">
+            <mixed-citation publication-type="other">McCoy, A. J., Grosse-Kunstleve, R. W., Adams, P. D., Winn, M. D., Storoni, L. C. &amp; Read, R. J. (2007). <italic toggle="yes">J. Appl. Cryst.</italic> 
+               <bold>40</bold>, 658&#8211;674.</mixed-citation>
+         </ref>
+         <ref id="bb22">
+            <mixed-citation publication-type="other">McMahon, R. M., Premkumar, L. &amp; Martin, J. L. (2014). <italic toggle="yes">Biochim. Biophys. Acta</italic>, <bold>1844</bold>, 1391&#8211;1401.</mixed-citation>
+         </ref>
+         <ref id="bb23">
+            <mixed-citation publication-type="other">Moriarty, N. W., Grosse-Kunstleve, R. W. &amp; Adams, P. D. (2009). <italic toggle="yes">Acta Cryst.</italic> D<bold>65</bold>, 1074&#8211;1080.</mixed-citation>
+         </ref>
+         <ref id="bb24">
+            <mixed-citation publication-type="other">Robert, X. &amp; Gouet, P. (2014). <italic toggle="yes">Nucleic Acids Res.</italic> 
+               <bold>42</bold>, W320&#8211;W324.</mixed-citation>
+         </ref>
+         <ref id="bb25">
+            <mixed-citation publication-type="other">Rosenthal, V. D. <italic toggle="yes">et al.</italic> (2012). <italic toggle="yes">Am. J. Infect. Control</italic>, <bold>40</bold>, 396&#8211;407.</mixed-citation>
+         </ref>
+         <ref id="bb26">
+            <mixed-citation publication-type="other">Shouldice, S. R., Heras, B., Jarrott, R., Sharma, P., Scanlon, M. J. &amp; Martin, J. L. (2010). <italic toggle="yes">Antioxid. Redox Signal.</italic> 
+               <bold>12</bold>, 921&#8211;931.</mixed-citation>
+         </ref>
+         <ref id="bb27">
+            <mixed-citation publication-type="other">Totsika, M., Heras, B., Wurpel, D. J. &amp; Schembri, M. A. (2009). <italic toggle="yes">J. Bacteriol.</italic> 
+               <bold>191</bold>, 3901&#8211;3908.</mixed-citation>
+         </ref>
+         <ref id="bb28">
+            <mixed-citation publication-type="other">Urban, A., Leipelt, M., Eggert, T. &amp; Jaeger, K. E. (2001). <italic toggle="yes">J. Bacteriol.</italic> 
+               <bold>183</bold>, 587&#8211;596.</mixed-citation>
+         </ref>
+         <ref id="bb29">
+            <mixed-citation publication-type="other">Winn, M. D. <italic toggle="yes">et al.</italic> (2011). <italic toggle="yes">Acta Cryst.</italic> D<bold>67</bold>, 235&#8211;242.</mixed-citation>
+         </ref>
+         <ref id="bb30">
+            <mixed-citation publication-type="other">Wunderlich, M. &amp; Glockshuber, R. (1993). <italic toggle="yes">Protein Sci.</italic> 
+               <bold>2</bold>, 717&#8211;726.</mixed-citation>
+         </ref>
+      </ref-list>
+   </back>
+</article>
