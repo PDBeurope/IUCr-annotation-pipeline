@@ -108,7 +108,7 @@ murmurhash==1.0.13
     #   thinc
 networkx==3.4.2
     # via torch
-nltk==3.9.1
+nltk==3.9.4
 # numpy==2.2.6
 numpy==1.26.4
     # via
