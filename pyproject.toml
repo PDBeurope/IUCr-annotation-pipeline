@@ -9,21 +9,21 @@ dependencies = [
     "bs4==0.0.2",
     "datasets==4.0.0",
     "en_core_sci_sm @ https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.5.3/en_core_sci_sm-0.5.3.tar.gz#sha256=20f740772479f3ec6c2a3a5b832a096400a821e2aba68a797c4ba54c224331ed",
-    "lxml==6.0.0",
-    "nltk==3.9.1",
+    "lxml==6.1.0",
+    "nltk==3.9.4",
     "numpy==1.26.4",
     "onnx==1.18.0",
     "onnxruntime==1.22.1",
     "optimum==1.27.0",
     "pandas==2.3.1",
-    "requests==2.32.4",
+    "requests==2.33.0",
     "solrq==1.1.2",
     "spacy==3.6.1",
     "thinc==8.1.12",
     "tokenizers==0.21.4",
     "transformers==4.53.3",
     "typer==0.9.4",
-    "urllib3==2.5.0",
+    "urllib3==2.7.0",
 ]
 
 [dependency-groups]
@@ -31,7 +31,7 @@ dev = [
     "coverage>=7.9.2",
     "flake8>=7.3.0",
     "pre-commit>=4.2.0",
-    "pytest>=8.4.1",
+    "pytest>=9.0.3",
 ]
 
 [project.scripts]
