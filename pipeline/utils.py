@@ -341,51 +341,32 @@ def downloading_map_xml(pdb: str, map_dir: str) -> None:
             fd.write(chunk)
 
 
-def build_val_file_path(structures: str, val_dir: str) -> str:
-    """
-    Create a list of directory paths to validation XML files.
+def make_path_xml_content_dict(filepath_list, structures):
+    dict = {}
+    for structure in structures:
+        for filepath in filepath_list:
+            if filepath.endswith(".gz") and structure in filepath:
+                try:
+                    data = read_xml_gz_file(filepath)
+                except ValueError:
+                    logging.error(f"Unable to read XML file for {filepath}")
+                try:
+                    soup = bs4.BeautifulSoup(data, "xml")
+                except Exception:
+                    logging.error(f"Unable to parse XML for {filepath}")
+            elif filepath.endswith(".xml") and structure in filepath:
+                try:
+                    data = read_xml_file(filepath)
+                except ValueError:
+                    logging.error(f"Unable to read XML file for {filepath}")
+                try:
+                    soup = bs4.BeautifulSoup(data, "xml")
+                except Exception:
+                    logging.error(f"Unable to parse XML for {filepath}")
 
-    Input
-    :param structures: list of PDB IDs
-    :type structures: List[str]
+            dict[structure] = soup
 
-    :param val_dir: base directory of validation XML location
-    :type val_dir: str
-
-    Output
-    :return: val_filepath; path to validation XML files
-    :rtype: str
-    """
-    struc_list = [c for c in structures]
-    struc_split = "".join(struc_list[1:3])
-    val_dir_long = os.path.join(val_dir, struc_split, structures)
-    val_filepath = os.path.join(val_dir_long, structures + "_validation.xml.gz")
-    assert os.path.isfile(val_filepath)
-
-    return val_filepath
-
-
-def build_map_file_path(structures: str, map_dir: str) -> str:
-    """
-    Create a list of directory paths to SIFTS mapping XML files.
-
-    Input
-    :param structures: list of PDB IDs
-    :type structures: List[str]
-
-    :param map_dir: base directory of SIFTS mapping XML location
-    :type map_dir: str
-
-    Output
-    :return: build_map_file_path; path to SIFTS mapping XML files
-    :rtype: str
-    """
-    struc_list = [c for c in structures]
-    struc_split = "".join(struc_list[1:3])
-    map_filepath = os.path.join(map_dir, struc_split, structures + ".xml.gz")
-    assert os.path.isfile(map_filepath)
-
-    return map_filepath
+    return dict
 
 
 def make_val_file_list(structures: List[str], val_dir: str) -> List[str]:

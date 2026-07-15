@@ -1,7 +1,7 @@
 import logging
 import re
 import bs4
-from typing import Any, Dict, List, Tuple, TextIO
+from typing import Any, Dict, List, Tuple
 from pipeline.grounding.validation_tools import extract_mapping_details
 from pipeline.utils import (
     make_threeletter_code,
@@ -791,9 +791,10 @@ def check_res_standard_pattern(
     return res, wildtype_res, mutant_res
 
 
-def per_res_validation(
-    soup: TextIO, text: str
-) -> Tuple[List[Dict[str, Any]], Dict[str, Any]]:
+# def per_res_validation(
+#     soup: TextIO, text: str
+# ) -> Tuple[List[Dict[str, Any]], Dict[str, Any]]:
+def per_res_validation(soup: bs4.BeautifulSoup, text: str) -> List[Dict[str, Any]]:
     """
     Using an XML object of a validation XML file identify the lines that
     contain validation statistics for the residue found as entity in the
@@ -824,8 +825,7 @@ def per_res_validation(
     :rtype: Dict[str, Any]
 
     """
-    val_data = bs4.BeautifulSoup(soup, "xml")
-    entry = val_data.find("Entry")
+    entry = soup.find("Entry")
     pdb_id = entry["pdbid"]
     percentbins = entry["percentilebins"]
     percentbins_split = percentbins.split(",")
@@ -834,20 +834,6 @@ def per_res_validation(
     wildtype_res = ""
     mutant_res = ""
     res_tag_list: List[Dict[str, Any]] = []
-
-    # if (text.isalnum() == False
-    #     or re.match(pattern7a, text)
-    #     or re.match(pattern7b, text)):
-    #     try:
-    #         text = split_res_and_chain(text)
-    #     except:
-    #         pass
-
-    # if re.match(pattern6, text):
-    #     res = text
-
-    # elif re.match(pattern5, text):
-    #     res = make_threeletter_code(text)
 
     # # check if residue_name_number is actually of type mutant
     # elif re.search(pattern1, text) or re.search(pattern2, text):
@@ -1065,8 +1051,7 @@ def mutant_validation(soup: bs4.BeautifulSoup, text: str) -> List[Dict[str, Any]
     :rtype: List[Dict[str, Any]]
 
     """
-    val_data = bs4.BeautifulSoup(soup, "xml")
-    entry = val_data.find("Entry")
+    entry = soup.find("Entry")
     pdb_id = entry["pdbid"]
     percentbins = entry["percentilebins"]
     percentbins_split = percentbins.split(",")
@@ -1173,7 +1158,10 @@ def mutant_validation(soup: bs4.BeautifulSoup, text: str) -> List[Dict[str, Any]
     return res_tag_list
 
 
-def per_res_validation_mapping(map_data: TextIO, tag: Dict[str, Any]) -> Dict[str, Any]:
+# def per_res_validation_mapping(map_data: TextIO, tag: Dict[str, Any]) -> Dict[str, Any]:
+def per_res_validation_mapping(
+    map_data: bs4.BeautifulSoup, tag: Dict[str, Any]
+) -> Dict[str, Any]:
     """
     Using the content of the SIFTS mapping file to call a mapping function
     and check for all the found validation statistics for a particular

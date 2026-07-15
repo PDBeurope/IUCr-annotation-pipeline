@@ -27,10 +27,6 @@ def main():
         "--sifts-dir",
         help="SIFTS dir",
     )
-    parser.add_argument(
-        "--pdb-id",
-        help="PDB ID",
-    )
     args = parser.parse_args()
 
     with open(args.input_json, "r") as f:
@@ -40,7 +36,6 @@ def main():
         input_json,
         args.validation_dir,
         args.sifts_dir,
-        args.pdb_id,
     )
 
     json_str = json.dumps(grounded_json, indent=4, ensure_ascii=False)
