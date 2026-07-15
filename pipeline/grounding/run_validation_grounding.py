@@ -1,0 +1,53 @@
+import argparse
+import gzip
+import json
+
+from pipeline.grounding.grounding import term_grounding_with_epmc_json
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="""
+        This script will compute residue grounding and write the results as a gzip-compressed file.
+        '"""
+    )
+    parser.add_argument(
+        "--input-json",
+        help="Input JSON",
+    )
+    parser.add_argument(
+        "--output-json",
+        help="Output JSON",
+    )
+    parser.add_argument(
+        "--validation-dir",
+        help="Validation dir",
+    )
+    parser.add_argument(
+        "--sifts-dir",
+        help="SIFTS dir",
+    )
+    parser.add_argument(
+        "--pdb-id",
+        help="PDB ID",
+    )
+    args = parser.parse_args()
+
+    with open(args.input_json, "r") as f:
+        input_json = json.load(f)
+
+    grounded_json = term_grounding_with_epmc_json(
+        input_json,
+        args.validation_dir,
+        args.sifts_dir,
+        args.pdb_id,
+    )
+
+    json_str = json.dumps(grounded_json, indent=4, ensure_ascii=False)
+    json_bytes = json_str.encode("utf-8")
+    with gzip.open(args.output_json, "wb") as f:
+        f.write(json_bytes)
+
+
+if __name__ == "__main__":
+    main()
