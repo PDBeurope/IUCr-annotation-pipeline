@@ -1158,7 +1158,6 @@ def mutant_validation(soup: bs4.BeautifulSoup, text: str) -> List[Dict[str, Any]
     return res_tag_list
 
 
-# def per_res_validation_mapping(map_data: TextIO, tag: Dict[str, Any]) -> Dict[str, Any]:
 def per_res_validation_mapping(
     map_data: bs4.BeautifulSoup, tag: Dict[str, Any]
 ) -> Dict[str, Any]:

@@ -1,8 +1,8 @@
 import argparse
-import gzip
 import json
 
 from pipeline.grounding.grounding import term_grounding_with_epmc_json
+from pipeline.utils import write_output_json
 
 
 def main():
@@ -38,10 +38,8 @@ def main():
         args.sifts_dir,
     )
 
-    json_str = json.dumps(grounded_json, indent=4, ensure_ascii=False)
-    json_bytes = json_str.encode("utf-8")
-    with gzip.open(args.output_json, "wb") as f:
-        f.write(json_bytes)
+    if args.output_json != "":
+        write_output_json(grounded_json, args.output_json)
 
 
 if __name__ == "__main__":

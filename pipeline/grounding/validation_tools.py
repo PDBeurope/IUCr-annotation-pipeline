@@ -10,7 +10,6 @@ logging.basicConfig(
 )
 
 
-# def get_uniprot_crossref_details(residue: bs4.element.Tag) -> Tuple[str, str, str, str]:
 def get_uniprot_crossref_details(
     residue: bs4.element.Tag, said_id: str
 ) -> Tuple[str, str, str]:
@@ -83,9 +82,6 @@ def get_secondary_uniprot_acc(map_regions: bs4.element.Tag) -> str:
     return ref_uniprot_secondary_acc
 
 
-# def extract_mapping_details(map_data: TextIO,
-#                             pdb_res_name: str,
-#                             pdb_res_num: str) -> Tuple[str, str, str, str]:
 def extract_mapping_details(
     map_data: bs4.BeautifulSoup, pdb_res_name: str, pdb_res_num: str, said_id: str
 ) -> Tuple[str, str, str, str]:
@@ -107,14 +103,8 @@ def extract_mapping_details(
              UniProt details for a specific residue
     :rtype: Tuple[str, str, str, str]
     """
-    # Bs_data = bs4.BeautifulSoup(map_data, "xml")
-
     entity = map_data.find("entity", attrs={"type": "protein", "entityId": said_id})
 
-    # residue = Bs_data.find("residue", {"dbSource" : "PDBe",
-    #                                  "dbCoordSys" : "PDBe",
-    #                                  "dbResNum" : pdb_res_num,
-    #                                  "dbResName" : pdb_res_name})
     if entity:
         try:
             residue = entity.find(
@@ -129,18 +119,6 @@ def extract_mapping_details(
         except Exception:
             logging.error("Unable to find residue in entity of SIFTS XML")
 
-    # (map_uni_num,
-    # ref_uniprot_acc,
-    # map_uni_name_three) = get_uniprot_crossref_details(residue)
-
-    # segment = residue.find_parent("segment")
-    # map_regions  = segment.find("listMapRegion")
-    # ref_uniprot_acc_species = get_secondary_uniprot_acc(map_regions)
-
-    # return (map_uni_name_three,
-    #         map_uni_num,
-    #         ref_uniprot_acc,
-    #         ref_uniprot_acc_species)
     if residue:
         try:
             map_uni_num, ref_uniprot_acc, map_uni_name_three = (

@@ -46,7 +46,7 @@ def validate_residue_name_number(
     val_list = []
     for key in val_dict.keys():
         try:
-            res_tag_list = per_res_validation(val_dict[key], text)
+            res_tag_list = per_res_validation(val_dict[key.lower()], text)
             if res_tag_list:
                 val_list.append((res_tag_list))
         except Exception:
@@ -94,7 +94,9 @@ def validate_mutant(
     return ann
 
 
-def map_anno_tags(ann: Dict[str, Any], map_data: bs4.BeautifulSoup) -> Dict[str, Any]:
+def map_anno_tags(
+    ann: Dict[str, Any], map_dict: Dict[str, bs4.BeautifulSoup]
+) -> Dict[str, Any]:
     """
     Function to map validated residues to their reference sequence in UniProt
     using SIFTS mapping XML files.
@@ -117,10 +119,10 @@ def map_anno_tags(ann: Dict[str, Any], map_data: bs4.BeautifulSoup) -> Dict[str,
     updated_tags = []
 
     for tag in ann["tags"]:
-        tag_pdb = tag["pdb_id"]
+        tag_pdb = tag["pdb_id"].lower()
         try:
             logging.info("Running SIFTS mapping for annotation tag")
-            mapped_tag = per_res_validation_mapping(map_data, tag)
+            mapped_tag = per_res_validation_mapping(map_dict[tag_pdb], tag)
             updated_tags.append(mapped_tag)
             logging.info("Finished mapping annotation tag to SIFTS")
         except KeyError:
