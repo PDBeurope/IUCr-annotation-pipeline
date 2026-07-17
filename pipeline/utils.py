@@ -750,6 +750,8 @@ def get_publisher_id_and_doi(soup: bs4.BeautifulSoup) -> Tuple[str, str]:
 
         return publisher_id, doi
 
+    return publisher_id, doi
+
 
 def get_pdb_id_from_supplemental(
     soup: bs4.BeautifulSoup,
