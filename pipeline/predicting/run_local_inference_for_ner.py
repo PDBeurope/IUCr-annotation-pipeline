@@ -178,13 +178,6 @@ def get_ml_tagged_sentences(
             aggregation_strategy="first",
         )
 
-    # # create a sentence list to iterate over during prediction
-    # all_sentences = []
-
-    # for e in sentence_dict:
-    #     sent = sentence_dict[e]["sentence"]
-    #     all_sentences.append(sent)
-
     # create a sentence list to iterate over during prediction
     all_sentences = [sentence_dict[e]["sentence"] for e in sentence_dict]
 
