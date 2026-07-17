@@ -159,7 +159,7 @@ def make_threeletter_code(one_letter_res: str) -> str:
     return three_letter_res
 
 
-def make_ori_mutant_threeletter(one_letter_res: str) -> Tuple[str, str, str, str]:
+def make_ori_mutant_threeletter(one_letter_res: str) -> Tuple[str, str]:
     """
     Function to turn 1-letter amino acid into 3-letter amino acid
     and identify which part in a mutation is the wildtype residue
@@ -173,11 +173,11 @@ def make_ori_mutant_threeletter(one_letter_res: str) -> Tuple[str, str, str, str
 
     Output
 
-    :return: full_ori_res, full_mutant_res, aminoacid, seq_num; wildtype
+    :return: full_ori_res, full_mutant_res; wildtype
              3-letter amino acid residue with sequence position, mutant
              3-letter with sequence position, wildtype 3-letter amino acid
              name, wildtype amino acid sequenec number
-    :rtype: Tuple[str, str, str, str]
+    :rtype: Tuple[str, str]
     """
     aminoacid: str = ""
     seq_num: str = ""
@@ -197,7 +197,7 @@ def make_ori_mutant_threeletter(one_letter_res: str) -> Tuple[str, str, str, str
     return full_ori_res, full_mutant_res
 
 
-def make_ori_mutant(three_letter_res: str) -> Tuple[str, str, str, str]:
+def make_ori_mutant(three_letter_res: str) -> Tuple[str, str]:
     """
     Function to turn 1-letter amino acid into 3-letter amino acid
     and identify which part in a mutation is the wildtype residue
@@ -211,11 +211,11 @@ def make_ori_mutant(three_letter_res: str) -> Tuple[str, str, str, str]:
 
     Output
 
-    :return: full_ori_res, full_mutant_res, aminoacid, seq_num; wildtype
+    :return: full_ori_res, full_mutant_res; wildtype
              3-letter amino acid residue with sequence position, mutant
              3-letter with sequence position, wildtype 3-letter amino acid
              name, wildtype amino acid sequenec number
-    :rtype: Tuple[str, str, str, str]
+    :rtype: Tuple[str, str]
     """
     aminoacid: str = ""
     seq_num: str = ""
@@ -730,7 +730,7 @@ def get_publisher_id_and_doi(soup: bs4.BeautifulSoup) -> Tuple[str, str]:
     Output
     :return: Tuple of article PubMed ID, PubMed Central ID, DOI and
                   publisher ID
-    :rtype: Tuple[str, str, str, str]
+    :rtype: Tuple[str, str]
     """
     doi: str = ""
     publisher_id: str = ""
@@ -749,6 +749,8 @@ def get_publisher_id_and_doi(soup: bs4.BeautifulSoup) -> Tuple[str, str]:
             doi = ""
 
         return publisher_id, doi
+
+    return publisher_id, doi
 
 
 def get_pdb_id_from_supplemental(
