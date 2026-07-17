@@ -3,26 +3,40 @@ from collections import defaultdict
 import argparse
 import logging
 import pathlib
-from typing import Any, Dict, List
+import os
+from typing import Any, Dict, List, Tuple, Union
 from optimum.pipelines import pipeline
 from transformers import AutoTokenizer
+from onnxruntime import SessionOptions
 from optimum.onnxruntime import ORTModelForTokenClassification
 from pipeline.predicting.inference_tools import (
     merge_with_same_spans,
     get_all_paragraphs,
     get_para_sentences_as_dict,
-    get_abstract_sentences_as_dict)
-from pipeline.grounding.grounding import (
-    term_grounding_with_epmc_json)
-from pipeline.utils import (write_output_json,
-                            expand_to_epmc_annotation,
-                            get_article_license,
-                            get_article_ids,
-                            get_all_linked_structures,
-                            get_article_title,
-                            make_organism_dict_for_pdbs,
-                            make_output_json)
+    get_abstract_sentences_as_dict,
+)
 
+# from pipeline.grounding.grounding import (
+#     term_grounding_with_epmc_json)
+from pipeline.utils import (
+    write_output_json,
+    expand_to_epmc_annotation,
+    get_article_license,
+    get_publisher_id_and_doi,
+    get_all_linked_structures,
+    get_article_title,
+    make_organism_dict_for_pdbs,
+    make_output_json,
+    get_pmc_access,
+    pmid_pmcid_from_title,
+)
+
+
+logging.basicConfig(
+    format="%(asctime)s %(levelname)-8s %(message)s",
+    level=logging.INFO,
+    datefmt="%Y-%m-%d %H:%M:%S",
+)
 
 
 def extract_sentence_level_details(soup: BeautifulSoup) -> Dict[int, Any]:
@@ -50,22 +64,69 @@ def extract_sentence_level_details(soup: BeautifulSoup) -> Dict[int, Any]:
     abs_full = soup.find_all("abstract")
 
     # get the sentences in the abstract
-    sentence_dict, sentence_counter = get_abstract_sentences_as_dict(abs_full,
-                                                                     sentence_dict,
-                                                                     sentence_counter)
+    sentence_dict, sentence_counter = get_abstract_sentences_as_dict(
+        abs_full, sentence_dict, sentence_counter
+    )
 
     # pair the paragraphs with the sections
     paras_with_section = get_all_paragraphs(all_sections)
 
     # get the sentences for the different sections
-    sentence_dict = get_para_sentences_as_dict(paras_with_section,
-                                               sentence_dict,
-                                               sentence_counter)
+    sentence_dict = get_para_sentences_as_dict(
+        paras_with_section, sentence_dict, sentence_counter
+    )
 
     return sentence_dict
 
-def get_ml_tagged_sentences(sentence_dict: Dict[int, Any],
-                            model_path_quantised: str) -> Dict[int, Any]:
+
+def get_model_and_tokenizer(
+    model_path_quantised: str,
+    use_gpu: bool = False,
+) -> Tuple[ORTModelForTokenClassification, AutoTokenizer]:
+    """
+    Helper function to instantiate the predictive model and its tokenizer.
+
+    Input
+    :param model_path_quantised: path to quantised model location
+    :type model_path_quantized: str
+
+    :param use_gpu: Enable GPU usage
+    :type use_gpu: bool
+
+    Output
+    :return: model_quantized; the instantiated, quantized model
+    rtype: ORTModelForTokenClassification
+    :return: tokenizer_quantized; the instantiated tokenizer matching the model
+    :rtype: AutoTokenizer
+    """
+    # initiate the model for prediction
+    so = None
+    if not use_gpu:
+        # Fix annoying `pthread_setaffinity_np failed for thread` errors in logs
+        so = SessionOptions()
+        so.intra_op_num_threads = os.cpu_count()
+    model_quantized = ORTModelForTokenClassification.from_pretrained(
+        model_path_quantised, file_name="model_quantized.onnx", session_options=so
+    )
+    # initiate the tokenizer
+    tokenizer_quantized = AutoTokenizer.from_pretrained(
+        model_path_quantised,
+        model_max_length=512,
+        batch_size=4,
+        truncation=True,
+    )
+    return model_quantized, tokenizer_quantized
+
+
+# def get_ml_tagged_sentences(sentence_dict: Dict[int, Any],
+#                             model_path_quantised: str,) -> Dict[int, Any]:
+def get_ml_tagged_sentences(
+    sentence_dict: Dict[int, Any],
+    model_path_quantised: Union[
+        str | Tuple[ORTModelForTokenClassification, AutoTokenizer]
+    ],
+    use_gpu: bool = False,
+) -> Dict[int, Any]:
     """
     Iterate over all the sentences in the dictionary and try them with the
     NER model to get residue-level protein structure annotations.
@@ -82,38 +143,54 @@ def get_ml_tagged_sentences(sentence_dict: Dict[int, Any],
     annotations
     :rtype: Dict[int, Any]
     """
-    # initiate the model for prediction
-    model_quantized = ORTModelForTokenClassification.from_pretrained(
-                        model_path_quantised,
-                        file_name = "model_quantized.onnx")
-    # initiate the tokenizer
-    tokenizer_quantized = AutoTokenizer.from_pretrained(model_path_quantised,
-                                                        model_max_length = 512,
-                                                        batch_size = 4,
-                                                        truncation = True)
-    # create the prediction pipeline
-    ner_quantized = pipeline("token-classification",
-                             model = model_quantized,
-                             tokenizer = tokenizer_quantized,
-                             aggregation_strategy = "first")
-    
-    # create a sentence list to iterate over during prediction
-    all_sentences = []
+    # # initiate the model for prediction
+    # model_quantized = ORTModelForTokenClassification.from_pretrained(
+    #                     model_path_quantised,
+    #                     file_name = "model_quantized.onnx")
+    # # initiate the tokenizer
+    # tokenizer_quantized = AutoTokenizer.from_pretrained(model_path_quantised,
+    #                                                     model_max_length = 512,
+    #                                                     batch_size = 4,
+    #                                                     truncation = True)
+    # # create the prediction pipeline
+    # ner_quantized = pipeline("token-classification",
+    #                          model = model_quantized,
+    #                          tokenizer = tokenizer_quantized,
+    #                          aggregation_strategy = "first")
+    if isinstance(model_path_quantised, str):
+        # instatiate model and tokenizer
+        model_quantized, tokenizer_quantized = get_model_and_tokenizer(
+            model_path_quantised, use_gpu
+        )
+        # create the prediction pipeline
+        ner_quantized = pipeline(
+            task="token-classification",
+            model=model_quantized,
+            tokenizer=tokenizer_quantized,
+            aggregation_strategy="first",
+        )
+    else:
+        # create the prediction pipeline
+        ner_quantized = pipeline(
+            task="token-classification",
+            model=model_path_quantised[0],
+            tokenizer=model_path_quantised[1],
+            aggregation_strategy="first",
+        )
 
-    for e in sentence_dict:
-        sent = sentence_dict[e]["sentence"]
-        all_sentences.append(sent)
+    # create a sentence list to iterate over during prediction
+    all_sentences = [sentence_dict[e]["sentence"] for e in sentence_dict]
 
     assert len(sentence_dict) == len(all_sentences)
-    
+
     # set number of sentences used for prediction and make a new dictionary
     # that will return the annotations
     no_sentences = 8
     ML_annotations = defaultdict(list)
 
     # split the list of sentences into smaller batches to iterate over
-    for i in range((len(all_sentences) + no_sentences - 1) // no_sentences ):
-        batch_sentences = all_sentences[i * no_sentences:(i + 1) * no_sentences]
+    for i in range((len(all_sentences) + no_sentences - 1) // no_sentences):
+        batch_sentences = all_sentences[i * no_sentences : (i + 1) * no_sentences]
 
         # make the actual prediction for a batch of sentences
 
@@ -123,14 +200,21 @@ def get_ml_tagged_sentences(sentence_dict: Dict[int, Any],
         for all_ent in pred:
             my_sentence = batch_sentences[count]
             if all_ent:
-                x_list_=[]
+                x_list_ = []
                 # iterate over all predicted annotations for the batch and
                 # make a separate entry for each sentence in the batch and
                 # pair them with the respective list of annotations in a
                 # dictionary
                 for ent in all_ent:
-                    x_list_.append([ent["start"], ent["end"], ent["entity_group"],
-                                    my_sentence[ent["start"]:ent["end"]], ent["score"]])
+                    x_list_.append(
+                        [
+                            ent["start"],
+                            ent["end"],
+                            ent["entity_group"],
+                            my_sentence[ent["start"] : ent["end"]],
+                            ent["score"],
+                        ]
+                    )
                 ML_annotations[my_sentence].extend(merge_with_same_spans(x_list_))
             count = count + 1
 
@@ -148,8 +232,9 @@ def get_ml_tagged_sentences(sentence_dict: Dict[int, Any],
 
 
 # this will get matches
-def get_sentences_matches_tags(sentences_tags: Dict[str, Any]
-                               ) -> Dict[str, List[Dict[str, Any]]]:
+def get_sentences_matches_tags(
+    sentences_tags: Dict[str, Any],
+) -> Dict[str, List[Dict[str, Any]]]:
     """
     Re-arrange the sentence dictionary so that the annotations for a sentence
     (used as a key) are collected in a list of dictionaries and linked the
@@ -169,7 +254,7 @@ def get_sentences_matches_tags(sentences_tags: Dict[str, Any]
     """
     # make an empty dictionary to attach sentences with annnotations to
     matches = defaultdict(list)
-    # iterate over the input dictionary and find the entries that have the 
+    # iterate over the input dictionary and find the entries that have the
     # key "annotations"
     for i in sentences_tags:
         entry = sentences_tags[i]
@@ -195,19 +280,20 @@ def get_sentences_matches_tags(sentences_tags: Dict[str, Any]
 
     return matches
 
-def generate_final_json(soup: BeautifulSoup,
-                        match: Dict[str, List[Dict[str, Any]]],
-                        annotator: str) -> Dict[str, Any]:
+
+def generate_final_json(
+    soup: BeautifulSoup, match: Dict[str, List[Dict[str, Any]]], annotator: str
+) -> Dict[str, Any]:
     """
     Run this function to generate a final dictionary for the current
-    publication 
+    publication
 
     Input
 
     :param soup: XML of current publication
     :type soup: BeautifulSoup
 
-    :param match_ml: dictionary of all annotations found for the current 
+    :param match_ml: dictionary of all annotations found for the current
                      publication on a per-sentence basis
     :type match_ml: Dict[str, List[Dict[str, Any]]]
 
@@ -227,51 +313,67 @@ def generate_final_json(soup: BeautifulSoup,
     # make a new, empty JSON for later return;
     # cerate some variables and lists
     json_generated: Dict[str, Any] = {}
-    pmcid = ""
-    pmid = ""
-    doi = ""
-    publisher_id = ""
-    publisher_license = ""
+    pmcid: str = ""
+    pmid: str = ""
+    doi: str = ""
+    publisher_id: str = ""
+    publisher_license: str = ""
+    pmc_access: str = ""
+    permitting_license: str = ""
     title = ""
-    all_pdbs = []
-    primary_pdbs = []
-    secondary_pdbs = []
+    all_pdbs: List[str] = []
+    primary_pdbs: List[str] = []
+    secondary_pdbs: List[str] = []
 
     # get the title for the paper
     try:
         title = get_article_title(soup)
-    except:
-        logging.error(f"No title found")
+    except ValueError as e:
+        logging.error(f"No title found. error {e}")
 
     # try to find original license
     try:
         publisher_license = get_article_license(soup)
-    except Exception as e:
-        logging.error(f"""No license-type
-                        {e}""")
-        
+    except ValueError as e:
+        logging.error(f"No license-type {e}")
+
     # try to find a form of a unique article identifier
     try:
-        pmid, pmcid, doi, publisher_id = get_article_ids(soup, title)
-    except Exception as e:
-        logging.error(f"""No article-id tag
-                        {e}""")
+        publisher_id, doi = get_publisher_id_and_doi(soup)
+    except ValueError as e:
+        logging.error(f"No article-id tag {e}")
+    try:
+        pmid, pmcid = pmid_pmcid_from_title(title, doi)
+    except Exception:
+        logging.error("""Couldn't retrieve details for title.
+                        Couldn't retrieve PubMed ID or PubMedCentral ID.
+                        """)
+    # get open access status from EuropePMC
+    try:
+        pmc_access = get_pmc_access(pmcid)
+    except ValueError as e:
+        logging.error(f"Can't specify open access status. Error {e}")
+    # set license permission
+    permitting_license = "Y"
     # check for supplementary material to identify the PDB entry codes for which
     # the paper is the primary citation; add those IDs to a list;
     # add the primary IDs to the JSON
     try:
-        all_pdbs, primary_pdbs, secondary_pdbs = get_all_linked_structures(soup, pmid, pmcid)
-    except:
-        logging.error(f"Couldn't find primary PDB entries for publication")
+        all_pdbs, primary_pdbs, secondary_pdbs = get_all_linked_structures(
+            soup, pmid, pmcid
+        )
+    except ValueError as e:
+        logging.error(f"Couldn't find primary PDB entries for publication. Error {e}")
 
     try:
         pdb_prot_species_dict = make_organism_dict_for_pdbs(all_pdbs)
-    except:
+    except ValueError as e:
+        logging.error(f"Unable to make species dictionary. Error {e}")
         pdb_prot_species_dict = {}
 
-    #  first check whether both pmc and pmids are available 
+    #  first check whether both pmc and pmids are available
     #  if available; make sure PubMed Central ID starts with "PMC"
-    if len(pmcid)>0 and len(pmid)>0:
+    if len(pmcid) > 0 and len(pmid) > 0:
         # check if pmcid starts with PMC
         if pmcid.startswith("PMC"):
             pmcid = pmcid
@@ -284,72 +386,86 @@ def generate_final_json(soup: BeautifulSoup,
     # generic output; last option when when no PMC or PubMed ID
     # coulod be found
     if pmcid:
-        json_generated = make_output_json("PMC",
-                     pmcid,
-                     pmid,
-                     doi,
-                     publisher_id,
-                     publisher_license,
-                     title,
-                     primary_pdbs,
-                     secondary_pdbs,
-                     all_pdbs,
-                     pdb_prot_species_dict)
+        json_generated = make_output_json(
+            "PMC",
+            pmcid,
+            pmid,
+            doi,
+            publisher_id,
+            publisher_license,
+            pmc_access,
+            permitting_license,
+            title,
+            primary_pdbs,
+            secondary_pdbs,
+            all_pdbs,
+            pdb_prot_species_dict,
+        )
 
     elif pmid:
-        json_generated = make_output_json("MED",
-                     pmcid,
-                     pmid,
-                     doi,
-                     publisher_id,
-                     publisher_license,
-                     title,
-                     primary_pdbs,
-                     secondary_pdbs,
-                     all_pdbs,
-                     pdb_prot_species_dict)
+        json_generated = make_output_json(
+            "MED",
+            pmcid,
+            pmid,
+            doi,
+            publisher_id,
+            publisher_license,
+            pmc_access,
+            permitting_license,
+            title,
+            primary_pdbs,
+            secondary_pdbs,
+            all_pdbs,
+            pdb_prot_species_dict,
+        )
 
     else:
-        json_generated = make_output_json("",
-                     pmcid,
-                     pmid,
-                     doi,
-                     publisher_id,
-                     publisher_license,
-                     title,
-                     primary_pdbs,
-                     secondary_pdbs,
-                     all_pdbs,
-                     pdb_prot_species_dict)
-        
+        json_generated = make_output_json(
+            "",
+            pmcid,
+            pmid,
+            doi,
+            publisher_id,
+            publisher_license,
+            pmc_access,
+            permitting_license,
+            title,
+            primary_pdbs,
+            secondary_pdbs,
+            all_pdbs,
+            pdb_prot_species_dict,
+        )
+
     # turn all the details into a proper JSON; add a key "anns"
     # to the future output JSON; key has a list as value in which
     # each element is a dictionary for an annotation
     try:
-        interested_sentences = generate_interested_sentences_in_json_format(match,
-                                                                            annotator)
+        interested_sentences = generate_interested_sentences_in_json_format(
+            match, annotator
+        )
         if interested_sentences:
             json_generated["anns"] = interested_sentences
         else:
             json_generated["anns"] = None
-    
-    except Exception as e:
+
+    except ValueError as e:
         logging.error(f"""error in pub date or generate_interested_sentences_in_json_format
                         {e}""")
 
     return json_generated
 
+
 # generate dictionary for matches and co-occurances, section and other scores
-def generate_interested_sentences_in_json_format(match: Dict[str, List[Dict[str, Any]]],
-                                                 annotator: str
-                                                 ) -> List[Dict[str, Any]]:
+def generate_interested_sentences_in_json_format(
+    match: Dict[str, List[Dict[str, Any]]], annotator: str
+) -> List[Dict[str, Any]]:
     """
     Run this function to unpick the per-sentence dictionary with the annotations
     of the current publication. Turn each entry into a EuropePMC style annotation.
 
     Input
 
-    :param match: dictionary of all annotations found for the current 
+    :param match: dictionary of all annotations found for the current
                      publication on a per-sentence basis
     :type match: Dict[str, Any]
 
@@ -383,13 +499,15 @@ def generate_interested_sentences_in_json_format(match: Dict[str, List[Dict[str,
     return interested_sentences
 
 
-def process_each_file_in_job_per_article(file_path: str,
-                                         model: str,
-                                         annotator: str,
-                                         val_dir: str,
-                                         map_dir: str,
-                                         out: str,
-                                         out_name: str = "") -> None:
+def process_each_file_in_job_per_article(
+    file_path: str,
+    model: str,
+    annotator: str,
+    #  val_dir: str,
+    #  map_dir: str,
+    out: str,
+    out_name: str = "",
+) -> None:
     """
     Main worker function to use a quantised model from ONNX framework to make
     predictions for structure specific named entities. Will run the following
@@ -442,48 +560,38 @@ def process_each_file_in_job_per_article(file_path: str,
     :rtype: Dict[str, Any]
     """
     # check that the output directory exists
-    pathlib.Path(out).mkdir(parents = True,
-                            exist_ok = True)
+    pathlib.Path(out).mkdir(parents=True, exist_ok=True)
     # try to open the input XML file
     try:
-        logging.info(f"Opening input JATS XML file")
+        logging.info("Opening input JATS XML file")
         with open(file_path) as x:
             data = x.read()
-        logging.info(f"Reading XML content")
+        logging.info("Reading XML content")
         # create the XML object for processing
         xml_soup = BeautifulSoup(data, "xml")
         # extract the sentence level details from the XML object
         # and return the isolated sentences with labels for section and
         # a unique sentence ID in a discionary
-        logging.info(f"Splitting XML content into sentences with unique identifiers")
+        logging.info("Splitting XML content into sentences with unique identifiers")
         all_sentences_dict = extract_sentence_level_details(xml_soup)
-        # run the sentences in the dictionary through the prediction algorithn 
-        # and only extract the sentences that have had predictions returned 
+        # run the sentences in the dictionary through the prediction algorithn
+        # and only extract the sentences that have had predictions returned
         # for them
-        logging.info(f"Predicting on sentences batches to create annotations")
+        logging.info("Predicting on sentences batches to create annotations")
         mltag_sentences = get_ml_tagged_sentences(all_sentences_dict, model)
         # expand the tagged sentences so that there is a dictionary entry for
         # each annotation that had been created; ignore sentences that do not
         # have any predictions
-        logging.info(f"Identify sentences with annotations and add additional \n"
-                     f"details to annotations")
+        logging.info("""Identify sentences with annotations and add additional
+                    details to annotations""")
         ml_match = get_sentences_matches_tags(mltag_sentences)
         # use all the annotations to create an output JSON file following the
         # EuropePMC annotation standard
         try:
-            logging.info(f"Creating final JSON for output")
-            ml_json = generate_final_json(xml_soup,
-                                          ml_match,
-                                          annotator)
+            logging.info("Creating final JSON for output")
+            ml_json = generate_final_json(xml_soup, ml_match, annotator)
         except Exception as e:
             logging.error(f"""Exception in generating final json : {file_path}
-                            {e}""")
-        try:
-            ml_json = term_grounding_with_epmc_json(ml_json,
-                                                    val_dir,
-                                                    map_dir)
-        except Exception as e:
-            logging.error(f"""Exception in generating final json after grounding: {file_path}
                             {e}""")
 
         # write the JSON file depending on what type of identifier has been
@@ -512,15 +620,15 @@ def process_each_file_in_job_per_article(file_path: str,
             # Writing to JSON
             outfile = out + "epmc_style_annos.json"
             write_output_json(ml_json, outfile)
-    except:
-            logging.error("error processing, so skipping file")
+    except Exception:
+        logging.error("error processing, so skipping file")
 
 
 def main():
-    logging.basicConfig(level = logging.INFO)
+    logging.basicConfig(level=logging.INFO)
 
     parser = argparse.ArgumentParser(
-                        description = """This script will process JATS XML files
+        description="""This script will process JATS XML files
                         from IUCr journals to extract annotations from residue-level
                         named entity recognistion. The 20 different entity types that
                         are annotated are: 'chemical', 'complex_assembly', 'evidence',
@@ -528,56 +636,59 @@ def main():
                         'protein', 'protein_state', 'protein_type', 'ptm', 'residue_name',
                         'residue_name_number', 'residue_number', 'residue_range',
                         'site', 'species', 'structure_element', 'taxonomy_domain',
-                        'bond_interaction'""")
-    parser.add_argument(
-                        "--jats-xml",
-                        help = "JATS XML file for which to predict annotations",
-                        dest = "jats_xml"
-                        )
-    parser.add_argument(
-                        "--model-dir",
-                        help = "directory containing core files of trained model",
-                        dest = "model_dir"
-                        )
-    parser.add_argument(
-                        "--model-name",
-                        help = "string giving the algorithm's name, e.g. autoannotator_v2.1_quant",
-                        dest = "model_name"
-                        )
-    parser.add_argument(
-                        "--val-dir",
-                        help = "directory containing validation XML files",
-                        dest = "val_dir",
-                        metavar = "PATH"
-                        )
-    parser.add_argument(
-                        "--map-dir",
-                        help = "directory containing mapping XML files",
-                        dest = "map_dir",
-                        metavar = "PATH"
-                        )
-    parser.add_argument(
-                        "--output-dir",
-                        help = "directory to write the JSON file with EuropePMC style annotations",
-                        dest = "output_dir"
-                        )
-    parser.add_argument(
-                        "--out-name",
-                        help = "user-defined output file name expanded to .json",
-                        default = "",
-                        dest = "out_name"
+                        'bond_interaction'"""
     )
-    
+    parser.add_argument(
+        "--jats-xml",
+        help="JATS XML file for which to predict annotations",
+        dest="jats_xml",
+    )
+    parser.add_argument(
+        "--model-dir",
+        help="directory containing core files of trained model",
+        dest="model_dir",
+    )
+    parser.add_argument(
+        "--model-name",
+        help="string giving the algorithm's name, e.g. autoannotator_v2.1_quant",
+        dest="model_name",
+    )
+    # parser.add_argument(
+    #                     "--val-dir",
+    #                     help = "directory containing validation XML files",
+    #                     dest = "val_dir",
+    #                     metavar = "PATH"
+    #                     )
+    # parser.add_argument(
+    #                     "--map-dir",
+    #                     help = "directory containing mapping XML files",
+    #                     dest = "map_dir",
+    #                     metavar = "PATH"
+    #                     )
+    parser.add_argument(
+        "--output-dir",
+        help="directory to write the JSON file with EuropePMC style annotations",
+        dest="output_dir",
+    )
+    parser.add_argument(
+        "--out-name",
+        help="user-defined output file name expanded to .json",
+        default="",
+        dest="out_name",
+    )
+
     args = parser.parse_args()
-                      
-    process_each_file_in_job_per_article(args.jats_xml,
-                                         args.model_dir,
-                                         args.model_name,
-                                         args.val_dir,
-                                         args.map_dir,
-                                         args.output_dir,
-                                         args.out_name)
-    
+
+    process_each_file_in_job_per_article(
+        args.jats_xml,
+        args.model_dir,
+        args.model_name,
+        #  args.val_dir,
+        #  args.map_dir,
+        args.output_dir,
+        args.out_name,
+    )
+
     logging.info(args.jats_xml + " : NER finished!")
 
 

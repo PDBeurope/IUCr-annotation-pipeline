@@ -1,20 +1,31 @@
 import bs4
 import en_core_sci_sm
+import logging
 from collections import OrderedDict
 from typing import Any, Dict, List, Tuple
 
-section_list = ["introduction",
-                "materials|methods",
-                "methods",
-                "results",
-                "discussion|interpretation",
-                "conclusions",
-                "display-objects"]
+logging.basicConfig(
+    format="%(asctime)s %(levelname)-8s %(message)s",
+    level=logging.INFO,
+    datefmt="%Y-%m-%d %H:%M:%S",
+)
+
+
+section_list = [
+    "introduction",
+    "materials|methods",
+    "methods",
+    "results",
+    "discussion|interpretation",
+    "conclusions",
+    "display-objects",
+]
+
 
 def split_into_sentences(paragraph: str) -> Dict[int, List[Any]]:
     """
     Split a paragraph into individual sentences using SciSpacy.
-    
+
     Input
 
     :param paragraph: text to be split into sentences
@@ -30,31 +41,31 @@ def split_into_sentences(paragraph: str) -> Dict[int, List[Any]]:
     nlp = en_core_sci_sm.load()
     # passing the raw text for a paragraph
     doc = nlp(paragraph)
-    
+
     # making an empty list to add individual sentences from paragraph to
     sentences_to_return = OrderedDict()
 
     # iterate over the individual sentences in the paragraph as split by SciSpacy
     for i, sent_ in enumerate(doc.sents):
-
         # replace "new line" break with a white space
         sent = str(sent_).replace("\n", " ")
-        
+
         # get the length of the current sentence to determine the position of the
         # stop character
         sent_length = len(sent)
-        
+
         # assemble the sentence for appending
         sentence = [sent, 0, sent_length]
         # appending sentence to list for returning
         sentences_to_return[i] = sentence
-        
+
     return sentences_to_return
+
 
 def get_all_paragraphs(all_sections: List[bs4.element.Tag]) -> Dict[str, List[str]]:
     """
     Get all paragraphs with section titles.
-    
+
     Input
 
     :param all_sections: list of sections containing paragraphs and titles
@@ -63,7 +74,7 @@ def get_all_paragraphs(all_sections: List[bs4.element.Tag]) -> Dict[str, List[st
     Output
 
     :return: para_dict; a dictionary with section titles as keys and list of paragraphs
-    as values 
+    as values
     :rtype: Dict[str, List[str]]
     """
     para_dict: Dict[str, List[str]] = {}
@@ -80,13 +91,16 @@ def get_all_paragraphs(all_sections: List[bs4.element.Tag]) -> Dict[str, List[st
 
     return para_dict
 
-def get_para_sentences_as_dict(paras_with_section: Dict[str, List[str]],
-                               sentence_dict: Dict[int, Any],
-                               sentence_counter: int) -> Dict[int, Any]:
+
+def get_para_sentences_as_dict(
+    paras_with_section: Dict[str, List[str]],
+    sentence_dict: Dict[int, Any],
+    sentence_counter: int,
+) -> Dict[int, Any]:
     """
     Get individual sentences from all paragraphs with section titles and create unique
     sentence IDs.
-    
+
     Input
 
     :param paras_with_section: dictionary of paragraphs and section titles
@@ -111,23 +125,27 @@ def get_para_sentences_as_dict(paras_with_section: Dict[str, List[str]],
             text_snippets = split_into_sentences(p)
             for ts in list(text_snippets.keys()):
                 sentence = text_snippets[ts]
-                snp_dict = {"sentence" : sentence[0],
-                            "id" : sentence_counter,
-                            "sent_start" : sentence[1],
-                            "sent_end" : sentence[2],
-                            "section" : k}
+                snp_dict = {
+                    "sentence": sentence[0],
+                    "id": sentence_counter,
+                    "sent_start": sentence[1],
+                    "sent_end": sentence[2],
+                    "section": k,
+                }
                 sentence_dict[sentence_counter] = snp_dict
                 sentence_counter = sentence_counter + 1
     return sentence_dict
 
-def get_abstract_sentences_as_dict(abs_full: List[bs4.element.Tag],
-                                   sentence_dict: Dict[int, Any],
-                                   sentence_counter: int
-                                   ) -> Tuple[Dict[int, Any], int]:
+
+def get_abstract_sentences_as_dict(
+    abs_full: List[bs4.element.Tag],
+    sentence_dict: Dict[int, Any],
+    sentence_counter: int,
+) -> Tuple[Dict[int, Any], int]:
     """
     Get individual sentences from abstract and create unique
     sentence IDs.
-    
+
     Input
 
     :param abs_full: pargraphs in abstract
@@ -150,7 +168,6 @@ def get_abstract_sentences_as_dict(abs_full: List[bs4.element.Tag],
     sentence_counter: int
     sentence_dict: Dict[int, Any]
     for a in abs_full:
-
         paragraphs = a.find_all("p")
 
         for p in paragraphs:
@@ -160,14 +177,17 @@ def get_abstract_sentences_as_dict(abs_full: List[bs4.element.Tag],
 
             for ts in list(text_snippet.keys()):
                 sentence = text_snippet[ts]
-                snp_dict = {"sentence" : sentence[0],
-                            "id" : sentence_counter,
-                            "sent_start" : sentence[1],
-                            "sent_end" : sentence[2],
-                            "section" : "abstract"}
+                snp_dict = {
+                    "sentence": sentence[0],
+                    "id": sentence_counter,
+                    "sent_start": sentence[1],
+                    "sent_end": sentence[2],
+                    "section": "abstract",
+                }
                 sentence_dict[sentence_counter] = snp_dict
                 sentence_counter = sentence_counter + 1
     return sentence_dict, sentence_counter
+
 
 def merge_with_same_spans(x_list: List[Tuple[Any]]) -> List[Tuple[Any]]:
     """
@@ -184,11 +204,13 @@ def merge_with_same_spans(x_list: List[Tuple[Any]]) -> List[Tuple[Any]]:
     :return: merged_list; list of tuples with merged annotations
     :rtype: List[Tuple[Any]]
     """
-    merged_list:List[List[str]] = []
+    merged_list: List[List[str]] = []
     for sublist in x_list:
-        if (merged_list
+        if (
+            merged_list
             and merged_list[-1][1] == sublist[0]
-            and merged_list[-1][2] == sublist[2]):
+            and merged_list[-1][2] == sublist[2]
+        ):
             merged_list[-1][1] = sublist[1]
             merged_list[-1][3] += sublist[3]
         else:

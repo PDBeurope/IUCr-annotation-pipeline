@@ -1,13 +1,21 @@
 import logging
 import re
 import bs4
-from typing import Any, Dict, List, Tuple, TextIO
+from typing import Any, Dict, List, Tuple
 from pipeline.grounding.validation_tools import extract_mapping_details
-from pipeline.utils import (make_threeletter_code,
-                            make_ori_mutant_threeletter,
-                            make_ori_mutant,
-                            split_mutant_and_chain,
-                            split_res_and_chain)
+from pipeline.utils import (
+    make_threeletter_code,
+    make_ori_mutant_threeletter,
+    make_ori_mutant,
+    split_mutant_and_chain,
+    split_res_and_chain,
+)
+
+logging.basicConfig(
+    format="%(asctime)s %(levelname)-8s %(message)s",
+    level=logging.INFO,
+    datefmt="%Y-%m-%d %H:%M:%S",
+)
 
 # define search patterns for "residue_name_number" and "mutant"
 # text patterns to catch bad tokenization and additional characters
@@ -49,15 +57,18 @@ def make_clash_list(residue: bs4.element.Tag) -> List[Dict[str, Any]]:
             atom = c["atom"]
             clashmag = c["clashmag"]
             dist = c["dist"]
-            clash_dict = {"clash_id" : clash_id,
-                            "atom" : atom,
-                            "clashmag" : clashmag,
-                            "dist" : dist}
+            clash_dict = {
+                "clash_id": clash_id,
+                "atom": atom,
+                "clashmag": clashmag,
+                "dist": dist,
+            }
             clash_list.append(clash_dict)
-    except:
+    except ValueError:
         clash_list = []
 
     return clash_list
+
 
 def get_phi(residue: bs4.element.Tag) -> str:
     """
@@ -73,10 +84,11 @@ def get_phi(residue: bs4.element.Tag) -> str:
     """
     try:
         phi = residue["phi"]
-    except:
+    except KeyError:
         phi = ""
 
     return phi
+
 
 def get_psi(residue: bs4.element.Tag) -> str:
     """
@@ -92,10 +104,11 @@ def get_psi(residue: bs4.element.Tag) -> str:
     """
     try:
         psi = residue["psi"]
-    except:
+    except KeyError:
         psi = ""
 
     return psi
+
 
 def get_rama(residue: bs4.element.Tag) -> str:
     """
@@ -111,10 +124,11 @@ def get_rama(residue: bs4.element.Tag) -> str:
     """
     try:
         rama = residue["rama"]
-    except:
+    except KeyError:
         rama = ""
 
     return rama
+
 
 def get_res_name(residue: bs4.element.Tag) -> str:
     """
@@ -130,10 +144,11 @@ def get_res_name(residue: bs4.element.Tag) -> str:
     """
     try:
         res_name = residue["resname"]
-    except:
+    except KeyError:
         res_name = ""
 
     return res_name
+
 
 def get_res_num(residue: bs4.element.Tag) -> str:
     """
@@ -149,10 +164,11 @@ def get_res_num(residue: bs4.element.Tag) -> str:
     """
     try:
         res_num = residue["resnum"]
-    except:
+    except KeyError:
         res_num = ""
 
     return res_num
+
 
 def get_res_full_name(residue: bs4.element.Tag) -> str:
     """
@@ -169,11 +185,12 @@ def get_res_full_name(residue: bs4.element.Tag) -> str:
     """
     try:
         res_name_full = residue["resname"] + residue["resnum"]
-    except:
+    except ValueError:
         res_name_full = ""
 
     return res_name_full
-        
+
+
 def get_res_seq(residue: bs4.element.Tag) -> str:
     """
     Function to extract structure sequence number from validation
@@ -189,10 +206,11 @@ def get_res_seq(residue: bs4.element.Tag) -> str:
     """
     try:
         res_seq = residue["seq"]
-    except:
+    except KeyError:
         res_seq = ""
 
     return res_seq
+
 
 def get_res_chain(residue: bs4.element.Tag) -> str:
     """
@@ -207,11 +225,32 @@ def get_res_chain(residue: bs4.element.Tag) -> str:
     :rtype: str
     """
     try:
-        chain = residue["said"]
-    except:
+        chain = residue["chain"]
+    except KeyError:
         chain = ""
 
     return chain
+
+
+def get_res_said(residue: bs4.element.Tag) -> str:
+    """
+    Function to extract chain from validation XML file
+
+    Input
+    :param residue: XML tag containing validation stats for a specific residue
+    :type residue: bs4.element.Tag
+
+    Output
+    :return: said; said for residue
+    :rtype: str
+    """
+    try:
+        said = residue["said"]
+    except KeyError:
+        said = ""
+
+    return said
+
 
 def get_rotamer(residue: bs4.element.Tag) -> str:
     """
@@ -227,10 +266,11 @@ def get_rotamer(residue: bs4.element.Tag) -> str:
     """
     try:
         rotamer = residue["rota"]
-    except:
+    except KeyError:
         rotamer = ""
 
     return rotamer
+
 
 def get_alt_conf(residue: bs4.element.Tag) -> str:
     """
@@ -246,10 +286,11 @@ def get_alt_conf(residue: bs4.element.Tag) -> str:
     """
     try:
         alt_conf = residue["altcode"]
-    except:
+    except KeyError:
         alt_conf = ""
 
     return alt_conf
+
 
 def get_rscc(residue: bs4.element.Tag) -> str:
     """
@@ -265,10 +306,11 @@ def get_rscc(residue: bs4.element.Tag) -> str:
     """
     try:
         rscc = residue["rscc"]
-    except:
+    except KeyError:
         rscc = ""
-    
+
     return rscc
+
 
 def get_q_score(residue: bs4.element.Tag) -> str:
     """
@@ -284,10 +326,11 @@ def get_q_score(residue: bs4.element.Tag) -> str:
     """
     try:
         q_score = residue["Q_score"]
-    except:
+    except KeyError:
         q_score = ""
 
     return q_score
+
 
 def make_dist_outlier_list(residue: bs4.element.Tag) -> str:
     """
@@ -309,15 +352,18 @@ def make_dist_outlier_list(residue: bs4.element.Tag) -> str:
             rest_id = d["rest_id"]
             dist_viol_value = d["dist_violation_value"]
             atom = d["atom"]
-            dist_dict = {"dist_id" : dist_id,
-                            "rest_id" : rest_id,
-                            "dist_viol_value" : dist_viol_value,
-                            "atom" : atom}
+            dist_dict = {
+                "dist_id": dist_id,
+                "rest_id": rest_id,
+                "dist_viol_value": dist_viol_value,
+                "atom": atom,
+            }
             dist_list.append(dist_dict)
-    except:
+    except ValueError:
         dist_list = []
-    
+
     return dist_list
+
 
 def make_angle_outlier_list(residue: bs4.element.Tag) -> str:
     """
@@ -339,21 +385,24 @@ def make_angle_outlier_list(residue: bs4.element.Tag) -> str:
             rest_id = d["rest_id"]
             angle_viol_value = d["DihedralAngViolationValue"]
             atom = d["atom"]
-            dist_dict = {"angle_id" : angle_id,
-                            "rest_id" : rest_id,
-                            "dist_viol_value" : angle_viol_value,
-                            "atom" : atom}
+            dist_dict = {
+                "angle_id": angle_id,
+                "rest_id": rest_id,
+                "dist_viol_value": angle_viol_value,
+                "atom": atom,
+            }
             angle_list.append(dist_dict)
-    except:
+    except ValueError:
         angle_list = []
-    
+
     return angle_list
+
 
 def make_base_dict(residue: bs4.element.Tag) -> Dict[str, Any]:
     """
     Function to create a base dictionary for validation stats for a specific
     residue.
-    
+
     Input
     :param residue: XML object containing validation stats for a specific
     residue
@@ -373,29 +422,32 @@ def make_base_dict(residue: bs4.element.Tag) -> Dict[str, Any]:
     res_num = get_res_num(residue)
     res_seq = get_res_seq(residue)
     chain = get_res_chain(residue)
+    said = get_res_said(residue)
     rota = get_rotamer(residue)
     alt_conf = get_alt_conf(residue)
 
     res_tag_dict = {
-                    "pdb_res_name" : res_name,
-                    "pdb_res_number" : res_num,
-                    "pdb_res_seq" : res_seq,
-                    "pdb_res" : res_name,
-                    "pdb_chain" : chain,
-                    "ramachandran" : rama,
-                    "rotamer" : rota,
-                    "phi" : phi,
-                    "psi" : psi,
-                    "clashes" : clash_list,
-                    "altconf" : alt_conf,
-                    }
+        "pdb_res_name": res_name,
+        "pdb_res_number": res_num,
+        "pdb_res_seq": res_seq,
+        "pdb_res": res_name,
+        "pdb_chain": chain,
+        "pdb_said": said,
+        "ramachandran": rama,
+        "rotamer": rota,
+        "phi": phi,
+        "psi": psi,
+        "clashes": clash_list,
+        "altconf": alt_conf,
+    }
 
     return res_tag_dict
 
-def get_stats_from_em(residues: List[bs4.element.Tag],
-                      pdb_id: str,
-                      wildtype_res: str
-                      ) -> Tuple[List[Dict[str, Any]], Dict[str, Any]]:
+
+def get_stats_from_em(
+    residues: List[bs4.element.Tag],
+    pdb_id: str,
+) -> Tuple[List[Dict[str, Any]], Dict[str, Any]]:
     """
     Function to extract validation statisitcs for a structure determined using
     cryoEM. An XML object for a structures validation XML is searched for a
@@ -448,15 +500,15 @@ def get_stats_from_em(residues: List[bs4.element.Tag],
         q_score = get_q_score(residue)
         res_tag_dict["pdb_id"] = pdb_id
         res_tag_dict["q_score"] = q_score
-        res_tag_dict["wildtype_pdb_res"] = wildtype_res
         res_tag_list.append(res_tag_dict)
 
     return res_tag_list
 
-def get_stats_from_nmr(residues: List[bs4.element.Tag],
-                      pdb_id: str,
-                      wildtype_res: str
-                      ) -> Tuple[List[Dict[str, Any]], Dict[str, Any]]:
+
+def get_stats_from_nmr(
+    residues: List[bs4.element.Tag],
+    pdb_id: str,
+) -> Tuple[List[Dict[str, Any]], Dict[str, Any]]:
     """
     Function to extract validation statisitcs for a structure determined using
     NMR. An XML object for a structures validation XML is searched for a
@@ -511,15 +563,15 @@ def get_stats_from_nmr(residues: List[bs4.element.Tag],
         res_tag_dict["pdb_id"] = pdb_id
         res_tag_dict["distances"] = dist_list
         res_tag_dict["angles"] = angle_list
-        res_tag_dict["wildtype_pdb_res"] = wildtype_res
         res_tag_list.append(res_tag_dict)
 
     return res_tag_list
 
-def get_stats_from_xray(residues: List[bs4.element.Tag],
-                      pdb_id: str,
-                      wildtype_res: str,
-                      ) -> List[Dict[str, Any]]:
+
+def get_stats_from_xray(
+    residues: List[bs4.element.Tag],
+    pdb_id: str,
+) -> List[Dict[str, Any]]:
     """
     Function to extract validation statisitcs for a structure determined using
     X-ray diffraction. An XML object for a structures validation XML is searched for a
@@ -571,10 +623,10 @@ def get_stats_from_xray(residues: List[bs4.element.Tag],
         rscc = get_rscc(residue)
         res_tag_dict["pdb_id"] = pdb_id
         res_tag_dict["rscc"] = rscc
-        res_tag_dict["wildtype_pdb_res"] = wildtype_res
         res_tag_list.append(res_tag_dict)
 
     return res_tag_list
+
 
 def get_res_match_items(pattern6: str, res: str) -> List[str]:
     """
@@ -594,15 +646,20 @@ def get_res_match_items(pattern6: str, res: str) -> List[str]:
              amino acid name and item '1' being the sequence number
     :rtype: List[str]
     """
-    assert re.match(pattern6, res)
-    res_match = re.match(r"([a-z]+)([0-9]+)", res, re.I)
-    if res_match:
-        res_items = res_match.groups()
+    try:
+        assert re.match(pattern6, res)
+        res_match = re.match(r"([a-z]+)([0-9]+)", res, re.I)
+        if res_match:
+            res_items = res_match.groups()
+    except AssertionError:
+        res_items = ()
 
     return res_items
 
-def find_residues_in_val_file(val_data: bs4.BeautifulSoup,
-                              res_items: List[str]) -> List[bs4.element.Tag]:
+
+def find_residues_in_val_file(
+    val_data: bs4.BeautifulSoup, res_items: List[str]
+) -> List[bs4.element.Tag]:
     """
     Function to find a specific residue in a validation XML file.
 
@@ -619,12 +676,21 @@ def find_residues_in_val_file(val_data: bs4.BeautifulSoup,
              name (amino acid name) and sequence number
     :rtype: List[bs4.element.Tag]
     """
-    res_residues = val_data.find_all("ModelledSubgroup",
-                                     attrs = {"resnum" : res_items[1],
-                                              "resname" : res_items[0],
-                                              "model" : "1"})
-    
-    return res_residues
+    if res_items:
+        try:
+            res_residues_resnum = val_data.find_all(
+                "ModelledSubgroup",
+                attrs={"resnum": res_items[1], "resname": res_items[0], "model": "1"},
+            )
+        except IndexError:
+            logging.error("No residues found for 'resnum', 'resname, and 'model'")
+        if res_residues_resnum:
+            output = res_residues_resnum
+        else:
+            output = []
+
+    return output
+
 
 # can't currently test that as I have no example where the prediction gets
 # residue_name_number and mutant mixed up
@@ -634,10 +700,99 @@ def find_residues_in_val_file(val_data: bs4.BeautifulSoup,
 #     mini_dict["score"] = "removed"
 #     mini_dict["type"] = "mutant"
 #     return mini_dict
-    
 
-def per_res_validation(soup: TextIO, text: str
-                       ) -> Tuple[List[Dict[str, Any]], Dict[str, Any]]:
+
+def check_res_chain(text: str, pattern7a: re.Pattern, pattern7b: re.Pattern) -> str:
+    """
+    Function to check whether a text span contains a chain identifier.
+
+    Input
+    :param text: raw annotation text to be checked
+    :type text: str
+
+    :param pattern7a: regular expression pattern representing a residue in 3-letter notation with an additional letter at the start to represent a chain identifier
+    :type pattern7a: re.Pattern
+
+    :param pattern7b: regular expression pattern representing a residue in 3-letter notation with an additional letter after the sequence number to represent a chain identifier
+    :type pattern7b: re.Pattern
+
+    Output
+    :return: text; cleaned text with chain idnetifier removed
+    :rtype: str
+    """
+    if not text.isalnum() or re.match(pattern7a, text) or re.match(pattern7b, text):
+        try:
+            text = split_res_and_chain(text)
+        except ValueError:
+            logging.error(f"Could not split text {text} into residue and chain.")
+    return text
+
+
+def check_res_standard_pattern(
+    text: str,
+    pattern1: re.Pattern,
+    pattern2: re.Pattern,
+    pattern5: re.Pattern,
+    pattern6: re.Pattern,
+) -> Tuple[str, str, str]:
+    """
+    Function to check whether a text span contains a standard residue in 1- or 3-letter notation. If the text span is likely to be a mutant, return residues for wildtype and mutant.
+
+    Input
+
+    :param text: raw annotation text span
+    :type text: str
+
+    :param pattern1: regular expression pattern representing a 3-letter notation residue with additional trailing letters
+    :type pattern1: re.Pattern
+
+    :param pattern2: regular expression pattern representing a 1-letter notation residue with additional trailing letters
+    :type pattern2: re.Pattern
+
+    :param pattern5: regular expression pattern representing a 1-letter notation residue
+    :type pattern5: re.Pattern
+
+    :param pattern6: regular expression pattern representing a 3-letter notation residue
+    :type pattern6: re.Pattern
+
+
+    Output
+
+    :return: res, wildtype_res, mutant_res; return a tuple of res, wildtype and mutant residue
+    :rtype: Tuple[str, str, str]
+    """
+    res, wildtype_res, mutant_res = "", "", ""
+    try:
+        if re.match(pattern6, text):
+            res = text
+
+        elif re.match(pattern5, text):
+            res = make_threeletter_code(text)
+
+        # check if residue_name_number is actually of type mutant
+        elif re.search(pattern1, text) or re.search(pattern2, text):
+            if re.findall(r"[A-Z]{3}[0-9]+[A-Z]{3}", text):
+                threeletter_mutant = re.findall(r"[A-Z]{3}[0-9]+[A-Z]{3}", text)
+                text = threeletter_mutant[0]
+                (wildtype_res, mutant_res) = make_ori_mutant(text)
+                # print("HURRA HURRA HURRA HURRA HURRA HURRA ")
+                # print("HURRA HURRA HURRA HURRA HURRA HURRA ")
+                # mini_dict = check_anno_type()
+                # print(mini_dict)
+        else:
+            # print("BLA BLA BLA BLA BLA BLA BLA BLA BLA")
+            res, wildtype_res, mutant_res = "", "", ""
+    except ValueError:
+        logging.error(f"Could not process text {text} to standard residue format.")
+        res, wildtype_res, mutant_res = "", "", ""
+
+    return res, wildtype_res, mutant_res
+
+
+# def per_res_validation(
+#     soup: TextIO, text: str
+# ) -> Tuple[List[Dict[str, Any]], Dict[str, Any]]:
+def per_res_validation(soup: bs4.BeautifulSoup, text: str) -> List[Dict[str, Any]]:
     """
     Using an XML object of a validation XML file identify the lines that
     contain validation statistics for the residue found as entity in the
@@ -668,116 +823,208 @@ def per_res_validation(soup: TextIO, text: str
     :rtype: Dict[str, Any]
 
     """
-    val_data = bs4.BeautifulSoup(soup, "xml")
-    entry = val_data.find("Entry")
+    entry = soup.find("Entry")
     pdb_id = entry["pdbid"]
     percentbins = entry["percentilebins"]
     percentbins_split = percentbins.split(",")
 
+    res = ""
     wildtype_res = ""
     mutant_res = ""
-    res_tag_list = []
+    res_tag_list: List[Dict[str, Any]] = []
 
-    if (text.isalnum() == False
-        or re.match(pattern7a, text)
-        or re.match(pattern7b, text)):
-        try:
-            text = split_res_and_chain(text)
-        except:
-            pass
+    # # check if residue_name_number is actually of type mutant
+    # elif re.search(pattern1, text) or re.search(pattern2, text):
+    #     if re.findall(r"[A-Z]{3}[0-9]+[A-Z]{3}", text):
+    #         threeletter_mutant = re.findall(r"[A-Z]{3}[0-9]+[A-Z]{3}", text)
+    #         text = threeletter_mutant[0]
+    #         (wildtype_res,
+    #          mutant_res) = make_ori_mutant(text)
+    #         # print("HURRA HURRA HURRA HURRA HURRA HURRA ")
+    #         # print("HURRA HURRA HURRA HURRA HURRA HURRA ")
+    #         # mini_dict = check_anno_type()
+    #         # print(mini_dict)
 
-    if re.match(pattern6, text):
-        res = text
-
-    elif re.match(pattern5, text):
-        res = make_threeletter_code(text)
-
-    # check if residue_name_number is actually of type mutant
-    elif re.search(pattern1, text) or re.search(pattern2, text):
-        if re.findall(r"[A-Z]{3}[0-9]+[A-Z]{3}", text):
-            threeletter_mutant = re.findall(r"[A-Z]{3}[0-9]+[A-Z]{3}", text)
-            text = threeletter_mutant[0]
-            (wildtype_res,
-             mutant_res) = make_ori_mutant(text)
-            # print("HURRA HURRA HURRA HURRA HURRA HURRA ")
-            # print("HURRA HURRA HURRA HURRA HURRA HURRA ")
-            # mini_dict = check_anno_type()
-            # print(mini_dict)
+    try:
+        text = check_res_chain(text, pattern7a, pattern7b)
+    except ValueError:
+        logging.error(f"Unable to separate chain and residue for raw text {text}")
+    try:
+        res, wildtype_res, mutant_res = check_res_standard_pattern(
+            text, pattern1, pattern2, pattern5, pattern6
+        )
+    except ValueError:
+        logging.error(
+            f"Unable to identify any residue, wildtype or mutant pattern for raw text {text}"
+        )
+    if not any((res, wildtype_res, mutant_res)):
+        logging.error(f"No res, wildtype_res or mutant_res found for {text}")
+        res_tag_list = []
+        return res_tag_list
 
     if res != "":
         try:
             res_items = get_res_match_items(pattern6, res)
-            res_residues = find_residues_in_val_file(val_data, res_items)
-            if len(res_residues) > 0 and "em" in percentbins_split:
-                res_tag_list = get_stats_from_em(res_residues,
-                                                 pdb_id,
-                                                 wildtype_res)
-                return res_tag_list
-            elif len(res_residues) > 0 and "nmr" in percentbins_split:
-                res_tag_list = get_stats_from_nmr(res_residues,
-                                                  pdb_id,
-                                                  wildtype_res)
-                return res_tag_list
-            elif len(res_residues) > 0 and "xray" in percentbins_split:
-                res_tag_list = get_stats_from_xray(res_residues,
-                                                   pdb_id,
-                                                   wildtype_res)
-                return res_tag_list
-        except:
-            logging.error(
-    f"""Didn't find residue {res} in validation file for PDB entry {pdb_id}""")
-    
-    if wildtype_res != "":
+        except ValueError:
+            logging.error(f"Could not match residue {res} to standard pattern.")
+        if res_items:
+            try:
+                res_residues = find_residues_in_val_file(soup, res_items)
+            except ValueError:
+                logging.error(
+                    f"Could not find residues in validation file for {res_items}."
+                )
+            if not res_residues:
+                logging.error(f"No residues found in validation XML for {res_items}")
+                res_tag_list = []
+            else:
+                if len(res_residues) > 0 and "em" in percentbins_split:
+                    res_tag_list = get_stats_from_em(res_residues, pdb_id)
+                elif len(res_residues) > 0 and "nmr" in percentbins_split:
+                    res_tag_list = get_stats_from_nmr(res_residues, pdb_id)
+                elif len(res_residues) > 0 and "xray" in percentbins_split:
+                    res_tag_list = get_stats_from_xray(res_residues, pdb_id)
+        else:
+            res_tag_list = []
+    elif wildtype_res != "":
+        logging.info(
+            "Processing 'residue_name_number' as 'mutant'. \n"
+            "Looking at wildtype residue."
+        )
         try:
             wild_items = get_res_match_items(pattern6, wildtype_res)
-            wild_residues = find_residues_in_val_file(val_data, wild_items)
-
-            if len(wild_residues) > 0 and "em" in percentbins_split:
-                res_tag_list = get_stats_from_em(wild_residues,
-                                                 pdb_id,
-                                                 wildtype_res)
-                return res_tag_list
-            elif len(wild_residues) > 0 and "nmr" in percentbins_split:
-                res_tag_list = get_stats_from_nmr(wild_residues,
-                                                  pdb_id,
-                                                  wildtype_res)
-                return res_tag_list
-            elif len(wild_residues) > 0 and "xray" in percentbins_split:
-                res_tag_list = get_stats_from_xray(wild_residues,
-                                                   pdb_id,
-                                                   wildtype_res)
-                return res_tag_list
-        except:
+        except ValueError:
             logging.error(
-    f"""Didn't find wildtype residue {wildtype_res} from mutation in validation file for PDB entry {pdb_id}""")
-            
-    if mutant_res != "":
+                f"Could not match wildtype residue {wildtype_res} to standard pattern."
+            )
+        if wild_items:
+            try:
+                wild_residues = find_residues_in_val_file(soup, wild_items)
+            except ValueError:
+                logging.error(
+                    f"Could not find wildtype residues in validation file for {wild_items}."
+                )
+            if not wild_residues:
+                logging.error(
+                    f"No wildtype residues found in validation XML for {wild_items}"
+                )
+                res_tag_list = []
+            else:
+                if len(wild_residues) > 0 and "em" in percentbins_split:
+                    res_tag_list = get_stats_from_em(wild_residues, pdb_id)
+                elif len(wild_residues) > 0 and "nmr" in percentbins_split:
+                    res_tag_list = get_stats_from_nmr(wild_residues, pdb_id)
+                elif len(wild_residues) > 0 and "xray" in percentbins_split:
+                    res_tag_list = get_stats_from_xray(wild_residues, pdb_id)
+        else:
+            res_tag_list = []
+    elif mutant_res != "":
         try:
             mutant_items = get_res_match_items(pattern6, mutant_res)
-            mutant_residues = find_residues_in_val_file(val_data, mutant_items)
-
-            if len(mutant_residues) > 0 and "em" in percentbins_split:
-                res_tag_list = get_stats_from_em(wild_residues,
-                                                 pdb_id,
-                                                 wildtype_res)
-                return res_tag_list
-            elif len(mutant_residues) > 0 and "nmr" in percentbins_split:
-                res_tag_list = get_stats_from_nmr(wild_residues,
-                                                  pdb_id,
-                                                  wildtype_res)
-                return res_tag_list
-            elif len(mutant_residues) > 0 and "xray" in percentbins_split:
-                res_tag_list = get_stats_from_xray(wild_residues,
-                                                   pdb_id,
-                                                   wildtype_res)
-                return res_tag_list
-        except:
+        except ValueError:
             logging.error(
-    f"""Didn't find mutant residue {mutant_res} from mutation in validation file for PDB entry {pdb_id}""")
+                f"Could not match mutant residue {mutant_res} to standard pattern."
+            )
+        if mutant_items:
+            try:
+                mutant_residues = find_residues_in_val_file(soup, mutant_items)
+            except ValueError:
+                logging.error(
+                    f"Could not find mutant residues in validation file for {mutant_items}."
+                )
+            if not mutant_residues:
+                logging.error(
+                    f"No mutant residues found in validation XML for {mutant_items}"
+                )
+                res_tag_list = []
+            else:
+                if len(mutant_residues) > 0 and "em" in percentbins_split:
+                    res_tag_list = get_stats_from_em(mutant_residues, pdb_id)
+                elif len(mutant_residues) > 0 and "nmr" in percentbins_split:
+                    res_tag_list = get_stats_from_nmr(mutant_residues, pdb_id)
+                elif len(mutant_residues) > 0 and "xray" in percentbins_split:
+                    res_tag_list = get_stats_from_xray(mutant_residues, pdb_id)
+        else:
+            res_tag_list = []
+    else:
+        logging.error(
+            f"Failed to find any validation details for entity type 'residue_name_number' and {text}"
+        )
+        res_tag_list = []
+    return res_tag_list
 
 
-def mutant_validation(soup: bs4.BeautifulSoup, text: str
-                      ) -> List[Dict[str, Any]]:
+def check_mutant_format(
+    text: str,
+    pattern1: re.Pattern,
+    pattern2: re.Pattern,
+    pattern3: re.Pattern,
+    pattern4: re.Pattern,
+    pattern8: re.Pattern,
+) -> Tuple[list[Any], list[Any]]:
+    """
+    Function to identify wildtype and mutant residue from the text span with entity type mutant,
+    Input
+
+    :param text: raw annotation text span
+    :type text: str
+
+    :param pattern8: regular expression pattern representing a point mutation
+    :type pattern8: re.Pattern
+
+
+    Output
+
+    :return: m_wildtype_res, m_mutant_res; return a tuple of wildtype and mutant residue
+    :rtype: Tuple(str, str)]
+    """
+    threeletter_mutant, oneletter_mutant = [], []
+    try:
+        if (
+            re.match(pattern1, text)
+            or re.match(pattern2, text)
+            or re.match(pattern8, text)
+        ):
+            threeletter_mutant = re.findall(pattern3, text)
+            oneletter_mutant = re.findall(pattern4, text)
+    except ValueError:
+        logging.error(f"Could not process text {text} to standard mutant format.")
+        threeletter_mutant, oneletter_mutant = [], []
+
+    return threeletter_mutant, oneletter_mutant
+
+
+def identify_wildtype_and_mutant_res(
+    text: str, pattern8: re.Pattern
+) -> Tuple[str, str]:
+    """
+    Function to identify wildtype and mutant residue from the text span with entity type mutant,
+    Input
+
+    :param text: raw annotation text span
+    :type text: str
+
+    :param pattern8: regular expression pattern representing a point mutation
+    :type pattern8: re.Pattern
+
+
+    Output
+
+    :return: m_wildtype_res, m_mutant_res; return a tuple of wildtype and mutant residue
+    :rtype: Tuple(str, str)]
+    """
+    m_wildtype_res, m_mutant_res = "", ""
+    try:
+        if re.match(pattern8, text):
+            m_wildtype_res, m_mutant_res = split_mutant_and_chain(text)
+    except ValueError:
+        logging.error(f"Could not split text {text} into wildtype and mutant.")
+        m_wildtype_res, m_mutant_res = "", ""
+
+    return m_wildtype_res, m_mutant_res
+
+
+def mutant_validation(soup: bs4.BeautifulSoup, text: str) -> List[Dict[str, Any]]:
     """
     Using an XML object of a validation XML file identify the lines that
     contain validation statistics for the residue found as entity in the
@@ -802,88 +1049,116 @@ def mutant_validation(soup: bs4.BeautifulSoup, text: str
     :rtype: List[Dict[str, Any]]
 
     """
-    val_data = bs4.BeautifulSoup(soup, "xml")
-    entry = val_data.find("Entry")
+    entry = soup.find("Entry")
     pdb_id = entry["pdbid"]
     percentbins = entry["percentilebins"]
     percentbins_split = percentbins.split(",")
 
-    threeletter_mutant = ""
-    m_wildtype_res = ""
+    threeletter_mutant = list[Any] = []
+    m_wildtype_res = list[Any] = []
     m_mutant_res = ""
     res_tag_list = []
+    res_tag_list: List[Dict[str, Any]] = []
 
     try:
-        if (re.match(pattern1, text) or
-            re.match(pattern2, text) or
-            re.match(pattern8, text)):
-            threeletter_mutant = re.findall(pattern3, text)
-            oneletter_mutant = re.findall(pattern4, text)
-        if threeletter_mutant != []:
-            three_res_text = threeletter_mutant[0]
-            (m_wildtype_res,
-             m_mutant_res) = make_ori_mutant(three_res_text)
-        if oneletter_mutant != []:
-            one_res_text = oneletter_mutant[0]
-            (m_wildtype_res,
-             m_mutant_res) = make_ori_mutant_threeletter(one_res_text)
-        if re.match(pattern8, text):
-            (m_wildtype_res,
-             m_mutant_res) = split_mutant_and_chain(text)
-            
-    except:
+        threeletter_mutant, oneletter_mutant = check_mutant_format(
+            text, pattern1, pattern2, pattern3, pattern4, pattern8
+        )
+    except ValueError:
+        logging.error(
+            f"Unable to identify 1-letter and/or 3-letter mutant from raw text {text}"
+        )
+
+    if not any((threeletter_mutant, oneletter_mutant)):
+        logging.error(f"No 3-letter mutant or 1-letter mutant found for {text}")
         res_tag_list = []
         return res_tag_list
 
-    try:
-        items_m_wildtype = get_res_match_items(pattern6, m_wildtype_res)
-        wild_residues = find_residues_in_val_file(val_data, items_m_wildtype)
+    if threeletter_mutant:
+        try:
+            three_res_text = threeletter_mutant[0]
+            (m_wildtype_res, m_mutant_res) = make_ori_mutant(three_res_text)
+        except ValueError:
+            logging.error(
+                f"Unable to split 3-letter mutant {three_res_text} into wildtype and mutant residues"
+            )
+    elif oneletter_mutant:
+        try:
+            one_res_text = oneletter_mutant[0]
+            (m_wildtype_res, m_mutant_res) = make_ori_mutant_threeletter(one_res_text)
+        except ValueError:
+            logging.error(
+                f"Unable to split 1-letter mutant {oneletter_mutant} into wildtype and mutant residues"
+            )
+    else:
+        logging.error(f"Unable to create residue list for text {text}.")
+        res_tag_list = []
 
-        if len(wild_residues) > 0 and "em" in percentbins_split:
-            res_tag_list = get_stats_from_em(wild_residues,
-                                             pdb_id,
-                                             m_wildtype_res)
-            return res_tag_list
-        elif len(wild_residues) > 0 and "nmr" in percentbins_split:
-            res_tag_list = get_stats_from_nmr(wild_residues,
-                                              pdb_id,
-                                              m_wildtype_res)
-            return res_tag_list
-        elif len(wild_residues) > 0 and "xray" in percentbins_split:
-            res_tag_list = get_stats_from_xray(wild_residues,
-                                               pdb_id,
-                                               m_wildtype_res)
-            return res_tag_list
-    except:
+    if m_wildtype_res:
+        try:
+            items_m_wildtype = get_res_match_items(pattern6, m_wildtype_res)
+        except ValueError:
+            logging.error(
+                f"Could not match for mutant-wildtype residue {m_wildtype_res} to standard pattern."
+            )
+        if items_m_wildtype:
+            try:
+                wild_residues = find_residues_in_val_file(soup, items_m_wildtype)
+            except ValueError:
+                logging.error(
+                    f"Could not find mutant-wildtype residues in validation file for {items_m_wildtype}."
+                )
+            if not wild_residues:
+                logging.error(
+                    f"No mutant-wildtype residues found in validation XML for {items_m_wildtype}"
+                )
+                res_tag_list = []
+            else:
+                if len(wild_residues) > 0 and "em" in percentbins_split:
+                    res_tag_list = get_stats_from_em(wild_residues, pdb_id)
+                elif len(wild_residues) > 0 and "nmr" in percentbins_split:
+                    res_tag_list = get_stats_from_nmr(wild_residues, pdb_id)
+                elif len(wild_residues) > 0 and "xray" in percentbins_split:
+                    res_tag_list = get_stats_from_xray(wild_residues, pdb_id)
+        if not res_tag_list:
+            try:
+                items_m_mutant = get_res_match_items(pattern6, m_mutant_res)
+            except ValueError:
+                logging.error(
+                    f"Could not match for mutant-mutant residue {m_mutant_res} to standard pattern."
+                )
+            if items_m_mutant:
+                try:
+                    mutant_residues = find_residues_in_val_file(soup, items_m_mutant)
+                except ValueError:
+                    logging.error(
+                        f"Could not find mutant-mutant residues in validation file for {items_m_mutant}."
+                    )
+                if not mutant_residues:
+                    logging.error(
+                        f"No mutant-wildtype residues found in validation XML for {items_m_mutant}"
+                    )
+                    res_tag_list = []
+                else:
+                    if len(mutant_residues) > 0 and "em" in percentbins_split:
+                        res_tag_list = get_stats_from_em(mutant_residues, pdb_id)
+                    elif len(mutant_residues) > 0 and "nmr" in percentbins_split:
+                        res_tag_list = get_stats_from_nmr(mutant_residues, pdb_id)
+                    elif len(mutant_residues) > 0 and "xray" in percentbins_split:
+                        res_tag_list = get_stats_from_xray(mutant_residues, pdb_id)
+
+    else:
         logging.error(
-f"""Didn't find wildtype residue {m_wildtype_res} from mutation in validation file for PDB entry {pdb_id}""")
+            f"Failed to find any validation details for entity type 'mutant' and {text}"
+        )
+        res_tag_list = []
 
-    try:
-        items_m_mutant = get_res_match_items(pattern6, m_mutant_res)
-        mutant_residues = find_residues_in_val_file(val_data, items_m_mutant)
-
-        if len(mutant_residues) > 0 and "em" in percentbins_split:
-            res_tag_list = get_stats_from_em(mutant_residues,
-                                             pdb_id,
-                                             m_wildtype_res)
-            return res_tag_list
-        elif len(mutant_residues) > 0 and "nmr" in percentbins_split:
-            res_tag_list = get_stats_from_nmr(mutant_residues,
-                                              pdb_id,
-                                              m_wildtype_res)
-            return res_tag_list
-        elif len(mutant_residues) > 0 and "xray" in percentbins_split:
-            res_tag_list = get_stats_from_xray(mutant_residues,
-                                               pdb_id,
-                                                m_wildtype_res)
-            return res_tag_list
-    except:
-        logging.error(
-f"""Didn't find mutant residue {m_mutant_res} from mutation in validation file for PDB entry {pdb_id}""")
+    return res_tag_list
 
 
-def per_res_validation_mapping(map_data: TextIO, tag: Dict[str, Any]
-                               ) -> Dict[str, Any]:
+def per_res_validation_mapping(
+    map_data: bs4.BeautifulSoup, tag: Dict[str, Any]
+) -> Dict[str, Any]:
     """
     Using the content of the SIFTS mapping file to call a mapping function
     and check for all the found validation statistics for a particular
@@ -906,23 +1181,52 @@ def per_res_validation_mapping(map_data: TextIO, tag: Dict[str, Any]
     :rtype: Dict[str, Any]
 
     """
-    pdb_res_name = tag["pdb_res_name"]
-    pdb_seq = tag["pdb_res_seq"]
+    try:
+        pdb_res_name = tag["pdb_res_name"]
+        pdb_seq = tag["pdb_res_seq"]
+        said_id = tag["pdb_said"]
+    except KeyError:
+        logging.error(
+            "Unable to get details for 'pdb_res_name', 'pdb_res_seq', 'pdb_chain' or 'pdb_said' for SIFTS mapping"
+        )
+        pdb_res_name = ""
+        pdb_seq = ""
+        said_id = ""
 
-    (map_uni_name_three,
-    map_uni_num,
-    ref_uniprot_acc,
-    ref_uniprot_acc_species) = extract_mapping_details(map_data,
-                                                        pdb_res_name,
-                                                        pdb_seq)
-    if ref_uniprot_acc_species == "":
-        uniprot_uri = "https://www.uniprot.org/uniprot/" + ref_uniprot_acc
+    if not any((pdb_res_name, pdb_seq, said_id)):
+        tag["uniprot_id"] = ""
+        tag["uniprot_name"] = ""
+        tag["uniprot_res"] = ""
+        tag["uniprot_uri"] = ""
+        return tag
     else:
-        uniprot_uri = "https://www.uniprot.org/uniprot/" + ref_uniprot_acc_species
-    uniprot_res = map_uni_name_three + str(map_uni_num)
-    tag["uniprot_id"] = ref_uniprot_acc
-    tag["uniprot_name"] = ref_uniprot_acc_species
-    tag["uniprot_res"] = uniprot_res
-    tag["uniprot_uri"] = uniprot_uri
+        try:
+            (
+                map_uni_name_three,
+                map_uni_num,
+                ref_uniprot_acc,
+                ref_uniprot_acc_species,
+            ) = extract_mapping_details(map_data, pdb_res_name, pdb_seq, said_id)
+        except Exception:
+            logging.error(
+                f"Unable to get SIFTS mapping details for {pdb_res_name}, {pdb_seq}, {said_id}, {said_id}"
+            )
+        try:
+            stem = "https://www.uniprot.org/uniprot/"
+            if ref_uniprot_acc_species == "":
+                uniprot_uri = stem + ref_uniprot_acc
+            else:
+                uniprot_uri = stem + ref_uniprot_acc_species
+            uniprot_res = map_uni_name_three + str(map_uni_num)
+            tag["uniprot_id"] = ref_uniprot_acc
+            tag["uniprot_name"] = ref_uniprot_acc_species
+            tag["uniprot_res"] = uniprot_res
+            tag["uniprot_uri"] = uniprot_uri
+        except Exception:
+            logging.error("Unable to get UniProt accession for species")
+            tag["uniprot_id"] = ""
+            tag["uniprot_name"] = ""
+            tag["uniprot_res"] = ""
+            tag["uniprot_uri"] = ""
 
-    return tag
+        return tag
