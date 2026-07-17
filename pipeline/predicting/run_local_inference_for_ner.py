@@ -16,8 +16,6 @@ from pipeline.predicting.inference_tools import (
     get_abstract_sentences_as_dict,
 )
 
-# from pipeline.grounding.grounding import (
-#     term_grounding_with_epmc_json)
 from pipeline.utils import (
     write_output_json,
     expand_to_epmc_annotation,
@@ -118,8 +116,6 @@ def get_model_and_tokenizer(
     return model_quantized, tokenizer_quantized
 
 
-# def get_ml_tagged_sentences(sentence_dict: Dict[int, Any],
-#                             model_path_quantised: str,) -> Dict[int, Any]:
 def get_ml_tagged_sentences(
     sentence_dict: Dict[int, Any],
     model_path_quantised: Union[
@@ -143,20 +139,6 @@ def get_ml_tagged_sentences(
     annotations
     :rtype: Dict[int, Any]
     """
-    # # initiate the model for prediction
-    # model_quantized = ORTModelForTokenClassification.from_pretrained(
-    #                     model_path_quantised,
-    #                     file_name = "model_quantized.onnx")
-    # # initiate the tokenizer
-    # tokenizer_quantized = AutoTokenizer.from_pretrained(model_path_quantised,
-    #                                                     model_max_length = 512,
-    #                                                     batch_size = 4,
-    #                                                     truncation = True)
-    # # create the prediction pipeline
-    # ner_quantized = pipeline("token-classification",
-    #                          model = model_quantized,
-    #                          tokenizer = tokenizer_quantized,
-    #                          aggregation_strategy = "first")
     if isinstance(model_path_quantised, str):
         # instatiate model and tokenizer
         model_quantized, tokenizer_quantized = get_model_and_tokenizer(
@@ -503,8 +485,6 @@ def process_each_file_in_job_per_article(
     file_path: str,
     model: str,
     annotator: str,
-    #  val_dir: str,
-    #  map_dir: str,
     out: str,
     out_name: str = "",
 ) -> None:
@@ -653,18 +633,6 @@ def main():
         help="string giving the algorithm's name, e.g. autoannotator_v2.1_quant",
         dest="model_name",
     )
-    # parser.add_argument(
-    #                     "--val-dir",
-    #                     help = "directory containing validation XML files",
-    #                     dest = "val_dir",
-    #                     metavar = "PATH"
-    #                     )
-    # parser.add_argument(
-    #                     "--map-dir",
-    #                     help = "directory containing mapping XML files",
-    #                     dest = "map_dir",
-    #                     metavar = "PATH"
-    #                     )
     parser.add_argument(
         "--output-dir",
         help="directory to write the JSON file with EuropePMC style annotations",
@@ -683,8 +651,6 @@ def main():
         args.jats_xml,
         args.model_dir,
         args.model_name,
-        #  args.val_dir,
-        #  args.map_dir,
         args.output_dir,
         args.out_name,
     )
