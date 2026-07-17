@@ -108,7 +108,7 @@ murmurhash==1.0.13
     #   thinc
 networkx==3.4.2
     # via torch
-nltk==3.9.4
+nltk==3.10.0
 # numpy==2.2.6
 numpy==1.26.4
     # via
@@ -157,7 +157,7 @@ protobuf==7.35.1
     # via
     #   onnx
     #   onnxruntime
-pyarrow==24.0.0
+pyarrow==25.0.0
     # via datasets
 pydantic==2.11.7
     # via
@@ -224,7 +224,7 @@ tokenizers==0.21.4
     # via
     #   iucr-annotation-pipeline (pyproject.toml)
     #   transformers
-torch==2.12.1
+torch==2.13.0
     # via optimum
 tqdm==4.67.1
     # via
