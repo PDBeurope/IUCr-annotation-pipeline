@@ -725,8 +725,6 @@ def check_res_chain(text: str, pattern7a: re.Pattern, pattern7b: re.Pattern) -> 
             text = split_res_and_chain(text)
         except ValueError:
             logging.error(f"Could not split text {text} into residue and chain.")
-    else:
-        text = text
     return text
 
 
