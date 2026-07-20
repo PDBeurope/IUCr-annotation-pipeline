@@ -1,6 +1,6 @@
 [project]
 name = "iucr_annotation_pipeline"
-version = "0.0.1"
+version = "0.1.0"
 description = "A Python-based pipeline to wrap around a transformer model to annotated IUCr-style JATS XML for functional protein residues"
 readme = "README.md"
 requires-python = ">=3.10"
